@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
+    --spacing: 1rem;
     --color-dark: #1e1e1e;
     --color-light: #dddddd;
+    --color-violet: rgb(100, 69, 255);
 }
 
 body {
