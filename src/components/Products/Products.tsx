@@ -3,6 +3,8 @@ import products from "../../config/products.json";
 
 export function Products() {
     const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
+    const [total, setTotal] = useState<number>(0);
+
     const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         let productList = [...selectedProducts];
         if (productList.includes(e.target.value)) {
@@ -11,10 +13,11 @@ export function Products() {
             productList = [...productList, e.target.value];
         }
         setSelectedProducts(productList);
-    }
-    const total = products
-        .filter((product) => selectedProducts.includes(product.id))
-        .reduce((acc, prod) => acc + prod.price, 0);
+        setTotal(products
+            .filter((product) => productList.includes(product.id))
+            .reduce((acc, prod) => acc + prod.price, 0)
+        );
+    };
 
     return (
         <section className="flex flex-col gap-1">
