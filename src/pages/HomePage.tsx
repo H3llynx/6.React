@@ -1,7 +1,7 @@
-import { Products } from "../components/Products/Products";
+import { ProductGroup } from "../features/components/ProductGroup/ProductGroup";
 
 export function HomePage() {
     return (
-        <Products />
+        <ProductGroup />
     )
 }
