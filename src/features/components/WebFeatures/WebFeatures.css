@@ -1,0 +1,9 @@
+@reference "../../../styles/index.css";
+
+.btn-plus-minus {
+    @apply flex items-center justify-center w-[25px] h-[25px] cursor-pointer border border-solid border-light rounded-full;
+}
+
+.web-feat-inputs {
+    @apply bg-grey p-[5px] w-[50px] rounded-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
