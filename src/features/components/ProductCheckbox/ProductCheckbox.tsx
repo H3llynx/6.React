@@ -1,5 +1,5 @@
-import type { ProductProps } from "../../types"
-export function ProductCheckbox({ id, name, price, onChange }: ProductProps) {
+import type { ProductCheckbox } from "../../types"
+export function ProductCheckbox({ id, name, price, onChange }: ProductCheckbox) {
     return (
         <>
             <label key={id} htmlFor={id}>

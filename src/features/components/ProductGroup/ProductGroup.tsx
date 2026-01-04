@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import products from "../../../config/products.json";
 import type { Product } from "../../types";
-import { ProductCheckbox } from "../ProductCheckbox/Product";
+import { ProductCheckbox } from "../ProductCheckbox/ProductCheckbox";
 import { WebFeatures } from "../WebFeatures/WebFeatures";
 
 export function ProductGroup() {

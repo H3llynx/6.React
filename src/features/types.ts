@@ -1,4 +1,4 @@
-export type ProductProps = {
+export type ProductCheckbox = {
     id: string;
     name: string;
     price: number;
