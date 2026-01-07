@@ -1,9 +1,11 @@
 export type ProductCheckbox = {
+    products: Product[];
     id: string;
     name: string;
     price: number;
     src: string;
-    onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
+    selectedProducts: Product[];
+    setSelectedProducts: (value: Product[]) => void;
 }
 
 export type Product = {

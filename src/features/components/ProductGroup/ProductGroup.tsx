@@ -12,20 +12,6 @@ export function ProductGroup() {
 
     const isWebSelected = selectedProducts.some(product => product.id === "web");
 
-    const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const productId = e.target.value;
-        let productList = [...selectedProducts];
-        if (productList.some(product => product.id === productId)) {
-            productList = productList.filter((product) => product.id !== productId);
-        } else {
-            const productToAdd = products.find(p => p.id === productId);
-            if (productToAdd) {
-                productList = [...productList, productToAdd];
-            }
-        }
-        setSelectedProducts(productList);
-    };
-
     useEffect(() => {
         const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price, 0);
         const pagesTotal = isWebSelected ? pages * 30 : 0;
@@ -43,11 +29,13 @@ export function ProductGroup() {
                     border border-solid border-light-grey bg-size-[200%_100%] hover:bg-rgba-gradient
                     hover:animate-[subtle-shadow-wave_1s_ease-in-out_infinite]">
                             <ProductCheckbox
+                                products={products}
                                 id={prod.id}
                                 name={prod.name}
                                 price={prod.price}
                                 src={prod.img}
-                                onChange={(e) => toggleProduct(e)}
+                                selectedProducts={selectedProducts}
+                                setSelectedProducts={setSelectedProducts}
                             />
                             {prod.id === "web" && isWebSelected &&
                                 <WebFeatures

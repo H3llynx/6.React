@@ -1,7 +1,22 @@
-import CheckSvg from "../../../assets/icons/check.svg?react"
-import type { ProductCheckbox } from "../../types"
+import CheckSvg from "../../../assets/icons/check.svg?react";
+import type { ProductCheckbox } from "../../types";
 
-export function ProductCheckbox({ id, name, price, src, onChange }: ProductCheckbox) {
+export function ProductCheckbox({ products, id, name, price, src, selectedProducts, setSelectedProducts }: ProductCheckbox) {
+
+    const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const productId = e.target.value;
+        let productList = [...selectedProducts];
+        if (productList.some(product => product.id === productId)) {
+            productList = productList.filter((product) => product.id !== productId);
+        } else {
+            const productToAdd = products.find(p => p.id === productId);
+            if (productToAdd) {
+                productList = [...productList, productToAdd];
+            }
+        }
+        setSelectedProducts(productList);
+    };
+
     return (
         <div className="flex flex-col gap-1 items-center">
             <h2 className="font-anton text text-xl text-teel">{name}</h2>
@@ -15,7 +30,7 @@ export function ProductCheckbox({ id, name, price, src, onChange }: ProductCheck
                 <input
                     key={id}
                     id={id}
-                    onChange={onChange}
+                    onChange={(e) => toggleProduct(e)}
                     type="checkbox"
                     value={id}
                     className="opacity-0 absolute"
