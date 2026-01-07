@@ -35,29 +35,35 @@ export function ProductGroup() {
     }, [selectedProducts, pages, languages, isWebSelected]);
 
     return (
-        <section className="flex flex-col gap-1">
-            {products.map((prod) => {
-                return (
-                    <div className="grid grid-cols-3 w-[80vw] items-center p-2 rounded-lg border border-solid border-light hover:border-violet md:w-[600px]">
-                        <ProductCheckbox
-                            id={prod.id}
-                            name={prod.name}
-                            price={prod.price}
-                            onChange={(e) => toggleProduct(e)}
-                        />
-                        {prod.id === "web" && isWebSelected &&
-                            <WebFeatures
-                                pages={pages}
-                                setPages={setPages}
-                                languages={languages}
-                                setLanguages={setLanguages}
-                            />}
+        <section className="flex flex-col gap-2 pt-4 relative">
+            <div className="m-auto flex gap-1 items-start justify-center w-full flex-col xl:flex-row xl:w-[1200px] pb-9">
+                {products.map((prod) => {
+                    return (
+                        <div className="flex flex-col w-[80vw] items-center pt-2 rounded-xl bg-light
+                    border border-solid border-light-grey bg-size-[200%_100%] hover:bg-rgba-gradient
+                    hover:animate-[subtle-shadow-wave_1s_ease-in-out_infinite]">
+                            <ProductCheckbox
+                                id={prod.id}
+                                name={prod.name}
+                                price={prod.price}
+                                src={prod.img}
+                                onChange={(e) => toggleProduct(e)}
+                            />
+                            {prod.id === "web" && isWebSelected &&
+                                <WebFeatures
+                                    pages={pages}
+                                    setPages={setPages}
+                                    languages={languages}
+                                    setLanguages={setLanguages}
+                                />}
 
-                    </div>
-                );
-            })}
-
-            <div>Total: {total.toFixed(2)}</div>
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="font-anton text-2xl py-1.5 px-4 text-end bg-light-grey bg-rgba-gradient
+            bg-size-[200%_100%] shadow-[5px_5px_20px_rgba(0,0,0,0.4)] text-dark-grey
+            fixed bottom-0 left-0 w-full animate-[move-overlay_15s_ease-out_infinite]">Total: {total.toFixed(2)} €</div>
         </section>
     )
 }

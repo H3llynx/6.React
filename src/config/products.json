@@ -1,15 +1,18 @@
 [{
     "id" : "seo",
     "name": "SEO Campaign",
-    "price": 300
+    "price": 300,
+    "img": "/6.React/products/sasha-seo.png"
     },
 {
     "id" : "ads",
     "name": "Advertising Campaign",
-    "price": 400
+    "price": 400,
+    "img": "/6.React/products/sasha-ads.png"
     },
 {
     "id" : "web",
     "name": "Website",
-    "price": 500
+    "price": 500,
+    "img": "/6.React/products/sasha-web.png"
     }]

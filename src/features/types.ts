@@ -2,6 +2,7 @@ export type ProductCheckbox = {
     id: string;
     name: string;
     price: number;
+    src: string;
     onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

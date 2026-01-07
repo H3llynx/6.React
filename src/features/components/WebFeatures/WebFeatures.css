@@ -1,9 +1,14 @@
 @reference "../../../styles/index.css";
 
+
 .btn-plus-minus {
-    @apply flex items-center justify-center w-[25px] h-[25px] cursor-pointer border border-solid border-light rounded-full;
+    @apply flex items-center justify-center w-[25px] h-[25px] cursor-pointer border border-solid border-light rounded-full text-xl hover:bg-rgba-light;
 }
 
 .web-feat-inputs {
-    @apply bg-grey p-[5px] w-[50px] rounded-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+    @apply bg-grey text-dark p-[5px] w-[50px] rounded-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+.web-feat-container {
+    @apply p-[0.3rem] flex gap-1 items-center justify-end w-full;
 }
