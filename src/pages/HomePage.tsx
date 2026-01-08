@@ -1,7 +1,9 @@
-import { ProductGroup } from "../features/components/ProductGroup/ProductGroup";
+import { Header } from "../components/Header/Header";
 
 export function HomePage() {
     return (
-        <ProductGroup />
+        <>
+            <Header />
+        </>
     )
 }
