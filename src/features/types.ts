@@ -3,6 +3,7 @@ export type ProductCheckbox = {
     id: string;
     name: string;
     price: number;
+    features: string[];
     src: string;
     selectedProducts: Product[];
     setSelectedProducts: (value: Product[]) => void;

@@ -1,7 +1,8 @@
+import AddSvg from "../../../assets/icons/add.svg?react";
 import CheckSvg from "../../../assets/icons/check.svg?react";
 import type { ProductCheckbox } from "../../types";
 
-export function ProductCheckbox({ products, id, name, price, src, selectedProducts, setSelectedProducts }: ProductCheckbox) {
+export function ProductCheckbox({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCheckbox) {
 
     const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const productId = e.target.value;
@@ -18,13 +19,21 @@ export function ProductCheckbox({ products, id, name, price, src, selectedProduc
     };
 
     return (
-        <div className="flex flex-col gap-1 items-center">
-            <h2 className="font-anton text text-xl text-teel">{name}</h2>
-            <h3>{price} €</h3>
-
+        <div className="flex flex-col gap-1 items-center pt-2 relative">
+            <h2 className="font-anton text text-2xl text-teel">{name}</h2>
+            <span className="absolute top-[-5%] right-[-5%] text-md text-light p-1 font-semibold flex justify-center
+            items-center aspect-square bg-(image:--background-image-price-label)
+            bg-cover">{price}<span className="text-sm ml-[3px]">€</span></span>
+            <ul className="px-1">
+                {features.map(feature => {
+                    return (
+                        <li className="flex text-sm text-grey-2 leading-[1.6]"><CheckSvg className="w-[19px] h-[19px]" /> {feature}</li>
+                    )
+                })}
+            </ul>
             <img src={src} className="w-full" />
-            <label key={id} htmlFor={id} className="flex self-end py-[0.7rem] px-[1.3rem]
-                mr-2 mb-2 rounded-4xl bg-dark-grey text-light text-sm font-semibold
+            <label key={id} htmlFor={id} className="flex py-[0.7rem] px-[1.3rem] self-end
+                rounded-4xl bg-dark-grey text-light text-sm font-semibold mr-2 mb-2
                 cursor-pointer group has-checked:bg-grey hover:has-checked:bg-light-grey
                 has-checked:text-teel">
                 <input
@@ -35,7 +44,7 @@ export function ProductCheckbox({ products, id, name, price, src, selectedProduc
                     value={id}
                     className="opacity-0 absolute"
                 />
-                <span className="inline group-has-checked:hidden">Add</span>
+                <span className="flex gap-0.5 items-center group-has-checked:hidden"><AddSvg /> Add</span>
                 <span className="hidden group-has-checked:flex gap-0.5 items-center"><CheckSvg /> Added</span>
             </label>
         </div>
