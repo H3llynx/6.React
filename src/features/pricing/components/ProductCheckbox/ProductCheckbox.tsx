@@ -1,5 +1,5 @@
-import AddSvg from "../../../assets/icons/add.svg?react";
-import CheckSvg from "../../../assets/icons/check.svg?react";
+import AddSvg from "../../../../assets/icons/add.svg?react";
+import CheckSvg from "../../../../assets/icons/check.svg?react";
 import type { ProductCheckbox } from "../../types";
 
 export function ProductCheckbox({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCheckbox) {

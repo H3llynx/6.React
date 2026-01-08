@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import products from "../../../config/products.json";
+import products from "../../../../config/products.json";
 import type { Product } from "../../types";
 import { ProductCheckbox } from "../ProductCheckbox/ProductCheckbox";
 import { Total } from "../Total/Total";

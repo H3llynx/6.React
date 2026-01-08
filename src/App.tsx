@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
-import { HomePage } from "./pages/HomePage";
-import { PricingPage } from "./pages/PricingPage";
+import { HomePage } from "./features/home/HomePage";
+import { PricingPage } from "./features/pricing/PricingPage";
 
 function App() {
 
