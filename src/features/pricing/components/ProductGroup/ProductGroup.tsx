@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Section } from "../../../../components/Section/Section";
 import products from "../../../../config/products.json";
 import type { Product } from "../../types";
-import { ProductCheckbox } from "../ProductCheckbox/ProductCheckbox";
+import { ProductCard } from "../ProductCard/ProductCard";
 import { Total } from "../Total/Total";
 import { WebFeatures } from "../WebFeatures/WebFeatures";
 
@@ -22,14 +23,14 @@ export function ProductGroup() {
     }, [selectedProducts, pages, languages, isWebSelected]);
 
     return (
-        <section className="flex flex-col gap-2 mt-[20vw] md:mt-[10vw] relative">
-            <div className="m-auto bg-p flex gap-1 items-center justify-center flex-col xl:flex-row xl:items-start  w-full xl:w-[1200px] pb-9">
+        <Section>
+            <div className="m-auto flex gap-1 items-center justify-center flex-col xl:flex-row xl:items-start w-screen xl:w-[1200px] pt-[16vw] md:pt-[8vw] pb-8">
                 {products.map((prod) => {
                     return (
                         <div className="flex flex-col w-[80vw] items-center rounded-xl bg-light
                     border border-solid border-light-grey bg-size-[200%_100%] hover:bg-rgba-gradient
                     hover:animate-[subtle-shadow-wave_1s_ease-in-out_infinite]">
-                            <ProductCheckbox
+                            <ProductCard
                                 products={products}
                                 id={prod.id}
                                 name={prod.name}
@@ -52,6 +53,6 @@ export function ProductGroup() {
                 })}
             </div>
             <Total total={total} />
-        </section>
+        </Section>
     )
 }
