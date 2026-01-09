@@ -1,5 +1,0 @@
-@reference "../../styles/index.css";
-
-.nav-li {
-    @apply font-anton text-2xl text-grey cursor-pointer hover:text-pink;
-}

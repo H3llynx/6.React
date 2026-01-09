@@ -1,0 +1,9 @@
+@reference "../../../../styles/index.css";
+
+.header-home {
+    @apply bg-home bg-cover bg-center h-[80vh];
+}
+
+.header-home:after {
+    @apply content-[""] absolute inset-0 z-0 bg-overlay-gradient bg-size-[100%_150%] animate-[move-overlay_5s_ease-in-out_infinite];
+}
