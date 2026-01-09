@@ -1,0 +1,9 @@
+@reference "../../styles/index.css";
+
+.nav-li {
+    @apply font-anton text-2xl cursor-pointer text-grey hover:text-pink;
+}
+
+.nav-li.active {
+    @apply opacity-50 pointer-events-none;
+}
