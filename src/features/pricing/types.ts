@@ -1,4 +1,4 @@
-export type ProductCheckbox = {
+export type ProductCard = {
     products: Product[];
     id: string;
     name: string;

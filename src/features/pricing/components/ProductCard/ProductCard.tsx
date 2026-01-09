@@ -1,8 +1,8 @@
 import AddSvg from "../../../../assets/icons/add.svg?react";
 import CheckSvg from "../../../../assets/icons/check.svg?react";
-import type { ProductCheckbox } from "../../types";
+import type { ProductCard } from "../../types";
 
-export function ProductCheckbox({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCheckbox) {
+export function ProductCard({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCard) {
 
     const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const productId = e.target.value;
@@ -22,8 +22,8 @@ export function ProductCheckbox({ products, id, name, price, features, src, sele
         <div className="flex flex-col gap-1 items-center pt-2 relative">
             <h2 className="font-anton text text-2xl text-teel">{name}</h2>
             <span className="absolute top-[-5%] right-[-5%] text-md text-light p-1 font-semibold flex justify-center
-            items-center aspect-square bg-(image:--background-image-price-label)
-            bg-cover">{price}<span className="text-sm ml-[3px]">€</span></span>
+            items-center aspect-square bg-price-label bg-cover">{price}
+                <span className="text-sm ml-[3px]">€</span></span>
             <ul className="px-1">
                 {features.map(feature => {
                     return (
