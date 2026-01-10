@@ -1,0 +1,9 @@
+@reference "../../../../styles/index.css";
+
+.form-inputs {
+    @apply bg-rgba-light border border-dark-grey p-[0.7rem] w-auto rounded-lg text-sm;
+}
+
+.form-label {
+    @apply flex flex-col text-sm gap-0.5;
+}
