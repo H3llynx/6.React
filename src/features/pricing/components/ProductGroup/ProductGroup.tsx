@@ -24,10 +24,10 @@ export function ProductGroup() {
 
     return (
         <Section>
-            <div className="m-auto flex gap-1 items-center justify-center flex-col xl:flex-row xl:items-start w-screen xl:w-[1200px] pt-[16vw] md:pt-[8vw] pb-8">
+            <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row xl:items-start w-[95vw] xl:w-[1200px] pt-[16vw] md:pt-[8vw] pb-8">
                 {products.map((prod) => {
                     return (
-                        <div className="flex flex-col w-[80vw] items-center rounded-xl bg-light
+                        <div className="flex flex-col w-[80vw] text-sm items-center rounded-xl bg-light
                     border border-solid border-light-grey bg-size-[200%_100%] hover:bg-rgba-gradient
                     hover:animate-[subtle-shadow-wave_1s_ease-in-out_infinite]">
                             <ProductCard

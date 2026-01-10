@@ -13,7 +13,7 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
     }
 
     return (
-        <div className="bg-teel text-light w-full pr-1 py-1 rounded-b-xl">
+        <div className="bg-teel text-light w-full px-1 py-1 rounded-b-xl">
             <div className="web-feat-container">
                 Pages:
                 <button

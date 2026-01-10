@@ -6,7 +6,7 @@
 }
 
 .web-feat-inputs {
-    @apply bg-grey text-dark p-[5px] w-[50px] rounded-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+    @apply bg-grey text-dark p-[5px] w-[40px] rounded-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
 }
 
 .web-feat-container {
