@@ -11,6 +11,7 @@ export function ProductCard({ products, id, name, price, features, src, selected
             productList = productList.filter((product) => product.id !== productId);
         } else {
             const productToAdd = products.find(p => p.id === productId);
+
             if (productToAdd) {
                 productList = [...productList, productToAdd];
             }
@@ -25,9 +26,13 @@ export function ProductCard({ products, id, name, price, features, src, selected
             items-center aspect-square bg-price-label bg-cover">{price}
                 <span className="ml-[3px]">€</span></span>
             <ul className="px-1">
-                {features.map(feature => {
+                {features.map((feature, index) => {
                     return (
-                        <li className="flex text-grey-2 leading-[1.6]"><CheckSvg className="w-[19px] h-[19px]" /> {feature}</li>
+                        <li
+                            key={index}
+                            className="flex text-grey-2 leading-[1.6]">
+                            <CheckSvg className="w-[19px] h-[19px]" />
+                            {feature}</li>
                     )
                 })}
             </ul>
@@ -35,7 +40,6 @@ export function ProductCard({ products, id, name, price, features, src, selected
             <label key={id} htmlFor={id} className="cta self-end mr-2 mb-2 group has-checked:bg-grey
             hover:has-checked:bg-light-grey has-checked:text-teel">
                 <input
-                    key={id}
                     id={id}
                     onChange={(e) => toggleProduct(e)}
                     type="checkbox"
