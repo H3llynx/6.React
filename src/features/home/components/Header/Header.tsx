@@ -16,14 +16,14 @@ export function Header() {
                 </div>
                 <div className="flex flex-col gap-1.5 w-[90%] sm:w-[70%] md:w-[60%] xl:w-[50%] 2xl:w-[40%]">
                     <TextBlock>
-                        <h2>Boost Your Online Presence</h2>
+                        <h2 className="h2-header">Boost Your Online Presence</h2>
                         <p>We specialize in SEO campaigns to rank higher on Google, targeted ads for clicks and conversions, and custom
                             website creation that's fast and mobile-ready.</p>
                         <p className="font-semibold mt-0.5">Select your package from our service cards and get started instantly.</p>
                     </TextBlock>
                     <TextBlock>
-                        <h2>Simple 3-Step Process</h2>
-                        <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2 text-red my-2 2xl:px-2">
+                        <h2 className="h2-header">Simple 3-Step Process</h2>
+                        <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-2 text-red my-1 2xl:px-2">
                             <List step={1}>Choose your service(s)</List>
                             <RightArrow className="right-arrow" />
                             <List step={2}>Review and confirm your order</List>

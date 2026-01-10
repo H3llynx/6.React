@@ -8,10 +8,10 @@
     @apply content-[""] fixed inset-0 z-0 bg-overlay-gradient bg-size-[100%_150%] animate-[move-overlay_5s_ease-in-out_infinite];
 }
 
-h2 {
-    @apply font-anton text-lg mb-0.5;
+.right-arrow {
+    @apply mt-2.5 hidden md:block md:-mx-3 relative z-10;
 }
 
-.right-arrow {
-    @apply mt-1.5 hidden md:block md:-mx-3 relative z-10;
+.h2-header {
+    @apply font-anton text-lg mb-0.5;
 }

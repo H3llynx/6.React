@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FlexContainer } from "../../../../components/FlexContainer/FlexContainer";
 import { Section } from "../../../../components/Section/Section";
 import products from "../../../../config/products.json";
 import type { Product } from "../../types";
@@ -23,8 +24,8 @@ export function ProductGroup() {
     }, [selectedProducts, pages, languages, isWebSelected]);
 
     return (
-        <Section>
-            <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row xl:items-start w-[95vw] xl:w-[1200px] pt-6 pb-9">
+        <Section bg="grey" padding="pt-6 pb-3">
+            <FlexContainer>
                 {products.map((prod) => {
                     return (
                         <div className="flex flex-col w-[80vw] text-sm items-center rounded-xl bg-light
@@ -51,7 +52,7 @@ export function ProductGroup() {
                         </div>
                     );
                 })}
-            </div>
+            </FlexContainer>
             <Total total={total} />
         </Section>
     )
