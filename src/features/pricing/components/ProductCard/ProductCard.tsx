@@ -32,10 +32,8 @@ export function ProductCard({ products, id, name, price, features, src, selected
                 })}
             </ul>
             <img src={src} className="w-full" />
-            <label key={id} htmlFor={id} className="flex py-[0.7rem] px-[1.3rem] self-end
-                rounded-4xl bg-dark-grey text-light font-semibold mr-2 mb-2
-                cursor-pointer group has-checked:bg-grey hover:has-checked:bg-light-grey
-                has-checked:text-teel">
+            <label key={id} htmlFor={id} className="cta self-end mr-2 mb-2 group has-checked:bg-grey
+            hover:has-checked:bg-light-grey has-checked:text-teel">
                 <input
                     key={id}
                     id={id}

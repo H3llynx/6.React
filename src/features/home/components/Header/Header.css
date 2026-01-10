@@ -1,7 +1,7 @@
 @reference "../../../../styles/index.css";
 
 .header-home {
-    @apply bg-home bg-fixed bg-cover bg-center min-h-full pb-4;
+    @apply bg-home bg-fixed bg-cover bg-center min-h-full;
 }
 
 .header-home:after {
@@ -10,4 +10,8 @@
 
 h2 {
     @apply font-anton text-lg mb-0.5;
+}
+
+.right-arrow {
+    @apply mt-1.5 hidden md:block md:-mx-3 relative z-10;
 }

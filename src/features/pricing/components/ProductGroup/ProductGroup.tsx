@@ -24,7 +24,7 @@ export function ProductGroup() {
 
     return (
         <Section>
-            <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row xl:items-start w-[95vw] xl:w-[1200px] pt-[16vw] md:pt-[8vw] pb-8">
+            <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row xl:items-start w-[95vw] xl:w-[1200px] pt-6 pb-9">
                 {products.map((prod) => {
                     return (
                         <div className="flex flex-col w-[80vw] text-sm items-center rounded-xl bg-light
