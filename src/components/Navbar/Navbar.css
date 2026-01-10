@@ -1,7 +1,7 @@
 @reference "../../styles/index.css";
 
 .nav-li {
-    @apply font-anton text-2xl cursor-pointer text-grey hover:text-pink;
+    @apply font-anton text-2xl cursor-pointer text-grey hover:text-teel;
 }
 
 .nav-li.active {
