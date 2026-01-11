@@ -12,3 +12,7 @@
 .web-feat-container {
     @apply p-[0.3rem] flex gap-1 items-center justify-end w-full;
 }
+
+.info-btn {
+    @apply cursor-pointer hover:text-orange;
+}

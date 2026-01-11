@@ -1,9 +1,18 @@
+
 export type ProductType = {
     id: string;
     name: string;
     price: number;
     pages?: number;
     languages?: number;
+}
+
+export type WebFeatureType = {
+    name: string;
+    remove: () => void;
+    add: () => void;
+    feature: number;
+    addFeature: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type WebFeaturesType = {
@@ -13,9 +22,14 @@ export type WebFeaturesType = {
     setLanguages: (value: number) => void;
 }
 
+export type DialogType = {
+    close: () => void;
+    feature: string;
+}
+
 export type ProductGroupType = {
-    selectedProducts: Product[];
-    setSelectedProducts: (products: Product[]) => void;
+    selectedProducts: ProductType[];
+    setSelectedProducts: (products: ProductType[]) => void;
     pages: number;
     setPages: (pages: number) => void;
     languages: number;
@@ -24,14 +38,14 @@ export type ProductGroupType = {
 }
 
 export type ProductCardType = {
-    products: Product[];
+    products: ProductType[];
     id: string;
     name: string;
     price: number;
     features: string[];
     src: string;
-    selectedProducts: Product[];
-    setSelectedProducts: (value: Product[]) => void;
+    selectedProducts: ProductType[];
+    setSelectedProducts: (value: ProductType[]) => void;
 }
 
 export type RequestFormType = {
@@ -48,7 +62,7 @@ export type QuoteBlockType = {
     name: string;
     email: string;
     phone: string;
-    selectedProducts: Product[];
+    selectedProducts: ProductType[];
     total: number;
 }
 
@@ -56,7 +70,7 @@ export type QuoteType = {
     name: string;
     email: string;
     phone: string;
-    selectedProducts: Product[];
+    selectedProducts: ProductType[];
     total: number;
     pages?: number;
     languages?: number;

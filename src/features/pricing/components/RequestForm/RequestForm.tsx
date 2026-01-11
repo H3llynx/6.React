@@ -29,7 +29,7 @@ export function RequestForm({
                 <label className="form-label">Phone number *
                     <input type="tel" className="form-inputs" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </label>
-                <button className="cta bg-light text-dark px-2.5 self-center">Request</button>
+                <button className="cta bg-light text-dark px-2.5 self-center md:self-end">Request</button>
             </form>
         </>
     )
