@@ -1,5 +1,5 @@
-import { Section } from "../../../../components/Section/Section";
-import type { RequestForm } from "../../types";
+
+import type { RequestFormType } from "../../types";
 import "./RequestForm.css";
 
 export function RequestForm({
@@ -10,16 +10,16 @@ export function RequestForm({
     phone,
     setPhone,
     onSubmit
-}: RequestForm) {
+}: RequestFormType) {
 
 
 
     return (
-        <Section bg="dark" padding="py-4">
-            <h2 className="font-anton text-center text-3xl">request a quote</h2>
+        <>
+            <h2 className="font-anton text-center text-3xl relative z-10 text-shadow-[0_1px_5px_black]">request a quote</h2>
             <form
                 onSubmit={onSubmit}
-                className="flex flex-col md:flex-row flex-wrap gap-2 w-[80vw] md:w-container justify-center md:items-end my-2">
+                className="flex flex-col md:flex-row flex-wrap gap-2 my-2 w-[80vw] md:w-container justify-center md:items-end">
                 <label className="form-label">Name *
                     <input type="text" className="form-inputs" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required />
                 </label>
@@ -29,8 +29,8 @@ export function RequestForm({
                 <label className="form-label">Phone number *
                     <input type="tel" className="form-inputs" placeholder="Your phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </label>
-                <button className="cta bg-light text-dark px-2.5">Request</button>
+                <button className="cta bg-light text-dark px-2.5 self-center">Request</button>
             </form>
-        </Section>
+        </>
     )
 }

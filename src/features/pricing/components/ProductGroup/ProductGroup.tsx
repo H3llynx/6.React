@@ -1,6 +1,6 @@
 import { Section } from "../../../../components/Section/Section";
 import products from "../../../../config/products.json";
-import type { ProductGroup } from "../../types";
+import type { ProductGroupType } from "../../types";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { Total } from "../Total/Total";
 import { WebFeatures } from "../WebFeatures/WebFeatures";
@@ -13,12 +13,12 @@ export function ProductGroup({
     languages,
     setLanguages,
     total
-}: ProductGroup) {
+}: ProductGroupType) {
 
     const isWebSelected = selectedProducts.some(product => product.id === "web");
 
     return (
-        <Section bg="grey" padding="pt-6 pb-3">
+        <Section bg="grey" padding="py-8">
             <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row w-container">
                 {products.map((prod) => {
                     return (
