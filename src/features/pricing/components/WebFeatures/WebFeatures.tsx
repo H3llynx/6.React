@@ -1,7 +1,7 @@
-import type { WebFeatures } from "../../types";
+import type { WebFeaturesType } from "../../types";
 import "./WebFeatures.css";
 
-export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFeatures) {
+export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFeaturesType) {
 
 
     const addPages = (e: React.ChangeEvent<HTMLInputElement>) => {

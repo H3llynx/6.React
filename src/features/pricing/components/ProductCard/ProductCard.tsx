@@ -1,8 +1,8 @@
 import AddSvg from "../../../../assets/icons/add.svg?react";
 import CheckSvg from "../../../../assets/icons/check.svg?react";
-import type { ProductCard } from "../../types";
+import type { ProductCardType } from "../../types";
 
-export function ProductCard({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCard) {
+export function ProductCard({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCardType) {
 
     const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const productId = e.target.value;

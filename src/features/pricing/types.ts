@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductType = {
     id: string;
     name: string;
     price: number;
@@ -6,14 +6,14 @@ export type Product = {
     languages?: number;
 }
 
-export type WebFeatures = {
+export type WebFeaturesType = {
     pages: number;
     setPages: (value: number) => void;
     languages: number;
     setLanguages: (value: number) => void;
 }
 
-export type ProductGroup = {
+export type ProductGroupType = {
     selectedProducts: Product[];
     setSelectedProducts: (products: Product[]) => void;
     pages: number;
@@ -23,7 +23,7 @@ export type ProductGroup = {
     total: number;
 }
 
-export type ProductCard = {
+export type ProductCardType = {
     products: Product[];
     id: string;
     name: string;
@@ -34,7 +34,7 @@ export type ProductCard = {
     setSelectedProducts: (value: Product[]) => void;
 }
 
-export type RequestForm = {
+export type RequestFormType = {
     name: string;
     setName: (name: string) => void;
     email: string;
@@ -44,7 +44,15 @@ export type RequestForm = {
     onSubmit: (e: React.FormEvent) => void;
 }
 
-export type Quote = {
+export type QuoteBlockType = {
+    name: string;
+    email: string;
+    phone: string;
+    selectedProducts: Product[];
+    total: number;
+}
+
+export type QuoteType = {
     name: string;
     email: string;
     phone: string;
