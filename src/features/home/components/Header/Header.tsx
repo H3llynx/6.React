@@ -30,7 +30,13 @@ export function Header() {
                             <RightArrow className="right-arrow" />
                             <List step={3}>Launch your campaign with expert support</List>
                         </div>
-                        <Link to="/pricing" className="cta self-end">Calculate my plan price</Link>
+                        <Link
+                            to="/pricing"
+                            className="cta self-end"
+                            tabIndex={0}
+                        >
+                            Calculate my plan price
+                        </Link>
                     </TextBlock>
                 </div>
             </div>

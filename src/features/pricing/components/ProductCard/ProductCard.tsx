@@ -4,6 +4,8 @@ import type { ProductCardType } from "../../types";
 
 export function ProductCard({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCardType) {
 
+    const isChecked = selectedProducts.some(product => product.id === id);
+
     const toggleProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
         const productId = e.target.value;
         let productList = [...selectedProducts];
@@ -17,8 +19,6 @@ export function ProductCard({ products, id, name, price, features, src, selected
         }
         setSelectedProducts(productList);
     };
-
-    const isChecked = selectedProducts.some(product => product.id === id);
 
     return (
         <div className="flex flex-col gap-1 items-center pt-2 relative">
@@ -38,15 +38,21 @@ export function ProductCard({ products, id, name, price, features, src, selected
                 })}
             </ul>
             <img src={src} className="w-full" />
-            <label key={id} htmlFor={id} className="cta self-end mr-2 mb-2 group has-checked:bg-grey
-            hover:has-checked:bg-light-grey has-checked:text-teel">
+            <label
+                key={id}
+                htmlFor={id}
+                className="cta self-end mr-2 mb-2 group has-checked:bg-grey
+            hover:has-checked:bg-light-grey has-checked:text-teel focus-within:outline-2
+             focus-within:outline-red focus-within:outline-offset-2"
+            >
                 <input
                     id={id}
                     onChange={(e) => toggleProduct(e)}
                     type="checkbox"
                     value={id}
-                    className="opacity-0 absolute"
+                    className="sr-only"
                     checked={isChecked}
+                    tabIndex={0}
                 />
                 <span className="flex gap-0.5 items-center group-has-checked:hidden"><AddSvg /> Add</span>
                 <span className="hidden group-has-checked:flex gap-0.5 items-center"><CheckSvg /> Added</span>

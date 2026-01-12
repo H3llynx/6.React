@@ -14,7 +14,9 @@ export function WebFeature({ name, remove, add, feature, addFeature }: WebFeatur
                 <button
                     className="info-btn"
                     aria-label={`more information about ${name}`}
-                    onClick={() => dialogRef.current?.showModal()}>
+                    onClick={() => dialogRef.current?.showModal()}
+                    tabIndex={0}
+                >
                     <InfoSvg aria-hidden="true" className="w-[19px]" />
                 </button>
                 <p className="capitalize">{name}s:</p>
@@ -22,12 +24,15 @@ export function WebFeature({ name, remove, add, feature, addFeature }: WebFeatur
             <button
                 className="btn-plus-minus"
                 aria-label="Remove page"
-                onClick={remove}>-</button>
+                onClick={remove}
+                tabIndex={0}
+            >-</button>
             <input type="number" className="web-feat-inputs" min="1" value={feature} onChange={(e) => addFeature(e)} />
             <button
                 className="btn-plus-minus"
                 aria-label="Add page"
                 onClick={add}
+                tabIndex={0}
             >+</button>
 
             <Dialog

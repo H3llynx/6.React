@@ -11,6 +11,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogType>(({ close, featur
                 onClick={close}
                 className="text-dark-grey hover:text-pink self-end"
                 aria-label="Close dialog"
+                tabIndex={0}
             >
                 ✕
             </button>
