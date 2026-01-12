@@ -11,13 +11,14 @@ export function ProductCard({ products, id, name, price, features, src, selected
             productList = productList.filter((product) => product.id !== productId);
         } else {
             const productToAdd = products.find(p => p.id === productId);
-
             if (productToAdd) {
                 productList = [...productList, productToAdd];
             }
         }
         setSelectedProducts(productList);
     };
+
+    const isChecked = selectedProducts.some(product => product.id === id);
 
     return (
         <div className="flex flex-col gap-1 items-center pt-2 relative">
@@ -45,6 +46,7 @@ export function ProductCard({ products, id, name, price, features, src, selected
                     type="checkbox"
                     value={id}
                     className="opacity-0 absolute"
+                    checked={isChecked}
                 />
                 <span className="flex gap-0.5 items-center group-has-checked:hidden"><AddSvg /> Add</span>
                 <span className="hidden group-has-checked:flex gap-0.5 items-center"><CheckSvg /> Added</span>

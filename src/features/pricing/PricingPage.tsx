@@ -52,7 +52,7 @@ export function PricingPage() {
             return
         }
         setQuotes([...quotes, newQuote]);
-        console.log(newQuote)
+        setSelectedProducts([]);
 
         setName("");
         setEmail("");
@@ -83,7 +83,10 @@ export function PricingPage() {
                     setPhone={setPhone}
                     onSubmit={handleAddQuote}
                 />
-                {quotes.length > 0 && <QuoteList quotes={quotes} />}
+                {quotes.length > 0 && <>
+                    <QuoteList quotes={quotes} />
+                    <button onClick={() => setQuotes([])}>Reset</button>
+                </>}
             </Section>
         </main >
     )
