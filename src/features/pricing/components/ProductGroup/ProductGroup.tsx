@@ -18,7 +18,7 @@ export function ProductGroup({
     const isWebSelected = selectedProducts.some(product => product.id === "web");
 
     return (
-        <Section bg="grey" padding="py-8">
+        <Section padding="py-8">
             <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row w-container">
                 {products.map((prod) => {
                     return (

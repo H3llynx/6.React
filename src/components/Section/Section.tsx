@@ -1,6 +1,6 @@
-export function Section({ children, bg, padding }: { children: React.ReactNode, bg: "grey" | "dark", padding: string }) {
+export function Section({ children, bg, padding }: { children: React.ReactNode, bg?: "dark", padding: string }) {
     return (
-        <section className={`${bg === "grey" ? "bg-grey" : "bg-dark-gradient"} ${padding} flex flex-col gap-2 relative h-full items-center`}>
+        <section className={`${bg === "dark" ? "bg-dark-gradient" : "bg-grey"} ${padding} flex flex-col gap-2 relative h-full items-center`}>
             {children}
         </section>
     )
