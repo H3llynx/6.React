@@ -5,7 +5,7 @@ import type { QuoteBlockType } from "../../types";
 
 export function QuoteBlock({ name, email, phone, selectedProducts, total }: QuoteBlockType) {
     return (
-        <div className="flex flex-col md:flex-row gap-1 justify-between md:items-end w-full md:w-[80%] xl:w-[50vw] bg-rgba-grey bg-rgba-gradient bg-size-[200%_100%]
+        <div className="flex flex-col md:flex-row gap-1 justify-between md:items-end w-full sm:w-lg md:w-2xl bg-rgba-grey bg-rgba-gradient bg-size-[200%_100%]
         shadow-[0_0px_20px_rgba(0,0,0,0.4)] animate-[move-overlay_5s_ease-out_infinite]
         rounded-2xl p-1.5 border border-grey-2 text-sm">
             <div className="md:w-[30%]">
