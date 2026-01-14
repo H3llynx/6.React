@@ -1,3 +1,4 @@
+import type React from "react";
 
 export type ProductType = {
     id: string;
@@ -50,10 +51,9 @@ export type QuoteFormType = {
 
 export type SortButtonType = {
     sort: string,
-    onClick: () => void,
     sortAsc?: boolean,
     isActive?: boolean
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export type QuoteBlockType = {
     name: string;

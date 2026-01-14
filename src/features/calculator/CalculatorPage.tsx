@@ -30,24 +30,35 @@ export function CalculatorPage() {
     const [filteredQuotes, setFilteredQuotes] = useState<QuoteType[]>(quotes);
     const [isAnnual, setIsAnnual] = useState(false);
 
-
     const isWebSelected = selectedProducts.find(p => p.id === "web");
 
     useEffect(() => {
         handleReset();
-    }, []);
+    }, [])
 
     useEffect(() => {
         const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price, 0);
         const pagesTotal = isWebSelected ? pages * 30 : 0;
         const languagesTotal = isWebSelected ? languages * 30 : 0;
+        const newTotal = productsTotal + pagesTotal + languagesTotal
 
-        setTotal(productsTotal + pagesTotal + languagesTotal);
-    }, [selectedProducts, pages, languages, isWebSelected]);
+        setTotal(isAnnual ? newTotal - newTotal * 0.2 : newTotal);
+    }, [selectedProducts, pages, languages, isWebSelected, isAnnual]);
 
     useEffect(() => {
         localStorage.setItem("quotes", JSON.stringify(quotes));
     }, [quotes]);
+
+    useEffect(() => {
+        if (query === "") {
+            setFilteredQuotes(quotes);
+        } else {
+            const searchedQuote = quotes.find(quote =>
+                quote.name.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredQuotes(searchedQuote ? [searchedQuote] : []);
+        }
+    }, [quotes, query]);
 
     const handleAddQuote = (e: React.FormEvent) => {
         e.preventDefault();
@@ -68,12 +79,7 @@ export function CalculatorPage() {
             alert("no product selected");
             return
         }
-        setQuotes(prev => {
-            const updatedQuotes = [...prev, newQuote];
-            return updatedQuotes.sort((a, b) =>
-                new Date(b.createdAt).getTime()
-                - new Date(a.createdAt).getTime())
-        });
+        setQuotes([...quotes, newQuote]);
         setSelectedProducts([]);
 
         setName("");
@@ -84,7 +90,7 @@ export function CalculatorPage() {
     const handleSortByName = () => {
         const newSortOrder = !nameSortAsc;
         const sorted = [...quotes].sort((a, b) => {
-            return nameSortAsc
+            return newSortOrder
                 ? a.name.localeCompare(b.name)
                 : b.name.localeCompare(a.name);
         });
@@ -95,37 +101,23 @@ export function CalculatorPage() {
 
     const handleReset = () => {
         const sorted = [...quotes].sort((a, b) =>
-            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
         setQuotes(sorted);
         setActiveSort(null);
-        setFilteredQuotes(quotes);
+        setQuery("");
     }
 
     const handleSortByDate = () => {
         const newSortOrder = !dateSortAsc
         const sorted = [...quotes].sort((a, b) => {
-            return dateSortAsc
-                ? new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-                : new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+            return newSortOrder
+                ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+                : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
         });
         setQuotes(sorted);
         setDateSortAsc(newSortOrder);
         setActiveSort("date")
-    };
-
-    function handleFilterQuote(e: React.ChangeEvent<HTMLInputElement>) {
-        setQuery(e.target.value)
-        const filter = e.target.value.trim();
-        if (filter === "") {
-            setFilteredQuotes(quotes);
-        } else {
-            const searchedQuote = quotes.find(quote =>
-                quote.name.toLowerCase().includes(filter))
-            if (searchedQuote) {
-                setFilteredQuotes([searchedQuote]);
-            };
-        }
     };
 
     return (
@@ -193,32 +185,34 @@ export function CalculatorPage() {
                     onSubmit={handleAddQuote}
                 />
                 {quotes.length > 0 &&
-                    <div className="m-auto text-light-grey flex flex-col gap-2 items-center justify-center w-quotes-container pt-4 border-t-2 border-rgba-grey border-dotted">
-                        <div className="flex text-xs font-semibold self-end items-center">
+                    <div className="m-auto text-light-grey flex flex-col gap-2 w-quotes-container pt-4 border-t-2 border-rgba-grey border-dotted">
+                        <div className="flex flex-col sm:flex-row gap-1 text-xs font-semibold self-end items-end sm:items-center">
                             <input
                                 type="search"
                                 value={query}
                                 placeholder="Filter by name"
                                 aria-label="Filter by name"
-                                className="bg-rgba-light border border-grey-2 rounded-lg text-sm p-0.5 mr-2"
-                                onChange={handleFilterQuote}
+                                className="bg-rgba-light border border-grey-2 rounded-lg text-sm p-0.5"
+                                onChange={(e) => setQuery(e.target.value)}
                             />
-                            <SortButton
-                                onClick={handleSortByName}
-                                sort="Name"
-                                sortAsc={nameSortAsc}
-                                isActive={activeSort === "name"}
-                            />
-                            <SortButton
-                                onClick={handleSortByDate}
-                                sort="Date"
-                                sortAsc={dateSortAsc}
-                                isActive={activeSort === "date"}
-                            />
-                            <SortButton
-                                onClick={handleReset}
-                                sort="Reset"
-                            />
+                            <div className="flex flex-1 gap-1">
+                                <SortButton
+                                    onClick={handleSortByName}
+                                    sort="Name"
+                                    sortAsc={nameSortAsc}
+                                    isActive={activeSort === "name"}
+                                />
+                                <SortButton
+                                    onClick={handleSortByDate}
+                                    sort="Date"
+                                    sortAsc={dateSortAsc}
+                                    isActive={activeSort === "date"}
+                                />
+                                <SortButton
+                                    onClick={handleReset}
+                                    sort="Reset"
+                                />
+                            </div>
                         </div>
                         {filteredQuotes.map((quote, index) => {
                             return (
