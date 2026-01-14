@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import FlowersL from "../../assets/flowers-landscape.png";
 import FlowersP from "../../assets/flowers-portrait.png";
 import { Section } from "../../components/Section/Section";
+import { Switcher } from "../../components/Switcher/Switcher";
 import products from "../../config/products.json";
 import { Header } from "./components/Header/Header";
 import { ProductCard } from "./components/ProductCard/ProductCard";
@@ -27,6 +28,8 @@ export function CalculatorPage() {
     const [activeSort, setActiveSort] = useState<string | null>(null);
     const [query, setQuery] = useState("");
     const [filteredQuotes, setFilteredQuotes] = useState<QuoteType[]>(quotes);
+    const [isAnnual, setIsAnnual] = useState(false);
+
 
     const isWebSelected = selectedProducts.find(p => p.id === "web");
 
@@ -128,7 +131,23 @@ export function CalculatorPage() {
     return (
         <main className="h-full bg-grey flex flex-col">
             <Header />
-            <Section padding="py-8">
+            <Section padding="pt-5 pb-8">
+                <div className="flex flex-col items-center justify-center">
+                    <div className="flex items-center gap-1 pb-2">
+                        <span className={`text-sm ${!isAnnual ? "text-teel font-medium" : "text-grey-2"}`}>
+                            Monthly payment
+                        </span>
+
+                        <Switcher
+                            isEnabled={isAnnual}
+                            onClick={() => setIsAnnual(!isAnnual)}
+                        />
+
+                        <span className={`text-sm ${isAnnual ? "text-teel font-medium" : "text-grey-2"}`}>
+                            Yearly paiment
+                        </span>
+                    </div>
+                </div>
                 <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row w-container">
                     {products.map((prod) => {
                         return (
