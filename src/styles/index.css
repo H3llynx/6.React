@@ -68,6 +68,10 @@ body {
         @apply w-[95vw] xl:w-[1200px];
     }
 
+    .w-quotes-container {
+        @apply w-[80vw] sm:w-lg md:w-2xl;
+    }
+
     .bg-dark-gradient {
         animation: move-overlay 15s ease-out infinite;
         background-color: var(--color-dark-grey);

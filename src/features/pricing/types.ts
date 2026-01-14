@@ -27,16 +27,6 @@ export type DialogType = {
     feature: string;
 }
 
-export type ProductGroupType = {
-    selectedProducts: ProductType[];
-    setSelectedProducts: (products: ProductType[]) => void;
-    pages: number;
-    setPages: (pages: number) => void;
-    languages: number;
-    setLanguages: (languages: number) => void;
-    total: number;
-}
-
 export type ProductCardType = {
     products: ProductType[];
     id: string;
@@ -58,6 +48,13 @@ export type RequestFormType = {
     onSubmit: (e: React.FormEvent) => void;
 }
 
+export type SortButtonType = {
+    sort: string,
+    onClick: () => void,
+    sortAsc?: boolean,
+    isActive?: boolean
+}
+
 export type QuoteBlockType = {
     name: string;
     email: string;
@@ -66,13 +63,8 @@ export type QuoteBlockType = {
     total: number;
 }
 
-export type QuoteType = {
-    name: string;
-    email: string;
-    phone: string;
-    selectedProducts: ProductType[];
-    total: number;
+export type QuoteType = QuoteBlockType & {
     pages?: number;
     languages?: number;
     createdAt: Date;
-}
+};
