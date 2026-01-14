@@ -13,11 +13,11 @@ export function Navbar({ bg }: { bg?: "colorful" }) {
                 Home
             </NavLink>
             <NavLink
-                to="/pricing"
+                to="/calculator"
                 className="nav-li stroke-nav"
-                tabIndex={location.pathname === "/pricing" ? -1 : 0}
+                tabIndex={location.pathname === "/calculator" ? -1 : 0}
             >
-                Pricing
+                Calculator
             </NavLink>
         </nav>
     )

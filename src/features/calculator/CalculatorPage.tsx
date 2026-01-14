@@ -6,14 +6,14 @@ import products from "../../config/products.json";
 import { Header } from "./components/Header/Header";
 import { ProductCard } from "./components/ProductCard/ProductCard";
 import { QuoteBlock } from "./components/QuoteBlock/QuoteBlock";
-import { RequestForm } from "./components/RequestForm/RequestForm";
+import { QuoteForm } from "./components/QuoteForm/QuoteForm";
 import { SortButton } from "./components/SortButton/SortButton";
 import { Total } from "./components/Total/Total";
 import { WebFeatures } from "./components/WebFeatures/WebFeatures";
 import type { ProductType, QuoteType } from "./types";
 
 
-export function PricingPage() {
+export function CalculatorPage() {
     const [selectedProducts, setSelectedProducts] = useState<ProductType[]>([]);
     const [total, setTotal] = useState<number>(0);
     const [pages, setPages] = useState<number>(1);
@@ -25,11 +25,13 @@ export function PricingPage() {
     const [nameSortAsc, setNameSortAsc] = useState(true);
     const [dateSortAsc, setDateSortAsc] = useState(true);
     const [activeSort, setActiveSort] = useState<string | null>(null);
+    const [query, setQuery] = useState("");
+    const [filteredQuotes, setFilteredQuotes] = useState<QuoteType[]>(quotes);
 
     const isWebSelected = selectedProducts.find(p => p.id === "web");
 
     useEffect(() => {
-        handleOrderReset();
+        handleReset();
     }, []);
 
     useEffect(() => {
@@ -88,12 +90,13 @@ export function PricingPage() {
         setActiveSort("name")
     };
 
-    const handleOrderReset = () => {
+    const handleReset = () => {
         const sorted = [...quotes].sort((a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
         setQuotes(sorted);
-        setActiveSort(null)
+        setActiveSort(null);
+        setFilteredQuotes(quotes);
     }
 
     const handleSortByDate = () => {
@@ -108,6 +111,19 @@ export function PricingPage() {
         setActiveSort("date")
     };
 
+    function handleFilterQuote(e: React.ChangeEvent<HTMLInputElement>) {
+        setQuery(e.target.value)
+        const filter = e.target.value.trim();
+        if (filter === "") {
+            setFilteredQuotes(quotes);
+        } else {
+            const searchedQuote = quotes.find(quote =>
+                quote.name.toLowerCase().includes(filter))
+            if (searchedQuote) {
+                setFilteredQuotes([searchedQuote]);
+            };
+        }
+    };
 
     return (
         <main className="h-full bg-grey flex flex-col">
@@ -148,7 +164,7 @@ export function PricingPage() {
             <Section bg="dark" padding="pb-4 2xl:py-6">
                 <img src={FlowersL} className="2xl:hidden portrait:hidden w-full -mt-[9%]" />
                 <img src={FlowersP} className="2xl:hidden landscape:hidden w-full -mt-[11%]" />
-                <RequestForm
+                <QuoteForm
                     name={name}
                     setName={setName}
                     email={email}
@@ -159,7 +175,15 @@ export function PricingPage() {
                 />
                 {quotes.length > 0 &&
                     <div className="m-auto text-light-grey flex flex-col gap-2 items-center justify-center w-quotes-container pt-4 border-t-2 border-rgba-grey border-dotted">
-                        <div className="flex text-xs font-semibold self-end">
+                        <div className="flex text-xs font-semibold self-end items-center">
+                            <input
+                                type="search"
+                                value={query}
+                                placeholder="Filter by name"
+                                aria-label="Filter by name"
+                                className="bg-rgba-light border border-grey-2 rounded-lg text-sm p-0.5 mr-2"
+                                onChange={handleFilterQuote}
+                            />
                             <SortButton
                                 onClick={handleSortByName}
                                 sort="Name"
@@ -173,11 +197,11 @@ export function PricingPage() {
                                 isActive={activeSort === "date"}
                             />
                             <SortButton
-                                onClick={handleOrderReset}
+                                onClick={handleReset}
                                 sort="Reset"
                             />
                         </div>
-                        {quotes.map((quote, index) => {
+                        {filteredQuotes.map((quote, index) => {
                             return (
                                 <QuoteBlock
                                     key={index}

@@ -1,8 +1,8 @@
 
-import type { RequestFormType } from "../../types";
-import "./RequestForm.css";
+import type { QuoteFormType } from "../../types";
+import "./QuoteForm.css";
 
-export function RequestForm({
+export function QuoteForm({
     name,
     setName,
     email,
@@ -10,13 +10,11 @@ export function RequestForm({
     phone,
     setPhone,
     onSubmit
-}: RequestFormType) {
-
-
+}: QuoteFormType) {
 
     return (
         <>
-            <h2 className="font-anton text-center text-3xl relative z-10 text-shadow-[0_1px_5px_black]">request a quote</h2>
+            <h2 className="font-anton text-center text-3xl relative z-10 text-shadow-[0_1px_5px_black]">Generate a quote</h2>
             <form
                 onSubmit={onSubmit}
                 className="flex flex-col md:flex-row flex-wrap gap-2 my-2 w-[80vw] md:w-container justify-center md:items-end">

@@ -38,7 +38,7 @@ export type ProductCardType = {
     setSelectedProducts: (value: ProductType[]) => void;
 }
 
-export type RequestFormType = {
+export type QuoteFormType = {
     name: string;
     setName: (name: string) => void;
     email: string;
