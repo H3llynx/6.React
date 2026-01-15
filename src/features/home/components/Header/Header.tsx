@@ -31,7 +31,7 @@ export function Header() {
                             <List step={3}>Get a ready-to-share project quote</List>
                         </div>
                         <Link
-                            to="/pricing"
+                            to="/calculator"
                             className="cta self-end"
                             tabIndex={0}
                         >

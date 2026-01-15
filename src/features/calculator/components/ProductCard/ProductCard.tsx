@@ -2,7 +2,17 @@ import AddSvg from "../../../../assets/icons/add.svg?react";
 import CheckSvg from "../../../../assets/icons/check.svg?react";
 import type { ProductCardType } from "../../types";
 
-export function ProductCard({ products, id, name, price, features, src, selectedProducts, setSelectedProducts }: ProductCardType) {
+export function ProductCard({
+    products,
+    id,
+    name,
+    price,
+    features,
+    src,
+    selectedProducts,
+    setSelectedProducts,
+    isAnnual
+}: ProductCardType) {
 
     const isChecked = selectedProducts.some(product => product.id === id);
 
@@ -23,8 +33,10 @@ export function ProductCard({ products, id, name, price, features, src, selected
     return (
         <div className="flex flex-col gap-1 items-center pt-2 relative">
             <h2 className="font-anton text text-2xl text-teel">{name}</h2>
-            <span className="absolute top-[-25px] right-[-15px] text-md text-light p-1 font-semibold flex justify-center
-            items-center aspect-square bg-price-label bg-cover">{price}
+            <span className="absolute top-[-25px] right-[-15px] text-md text-light
+            p-1 font-semibold flex justify-center items-center aspect-square
+            bg-price-label bg-cover">
+                {isAnnual ? price * 0.8 : price}
                 <span className="ml-[3px]">€</span></span>
             <ul className="px-1">
                 {features.map((feature, index) => {

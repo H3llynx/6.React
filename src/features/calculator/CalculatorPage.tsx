@@ -6,7 +6,7 @@ import { Switcher } from "../../components/Switcher/Switcher";
 import products from "../../config/products.json";
 import { Header } from "./components/Header/Header";
 import { ProductCard } from "./components/ProductCard/ProductCard";
-import { QuoteBlock } from "./components/QuoteBlock/QuoteBlock";
+import { Quote } from "./components/Quote/Quote";
 import { QuoteForm } from "./components/QuoteForm/QuoteForm";
 import { SortButton } from "./components/SortButton/SortButton";
 import { Total } from "./components/Total/Total";
@@ -31,10 +31,7 @@ export function CalculatorPage() {
     const [isAnnual, setIsAnnual] = useState(false);
 
     const isWebSelected = selectedProducts.find(p => p.id === "web");
-
-    useEffect(() => {
-        handleReset();
-    }, [])
+    console.log(quotes)
 
     useEffect(() => {
         const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price, 0);
@@ -42,7 +39,7 @@ export function CalculatorPage() {
         const languagesTotal = isWebSelected ? languages * 30 : 0;
         const newTotal = productsTotal + pagesTotal + languagesTotal
 
-        setTotal(isAnnual ? newTotal - newTotal * 0.2 : newTotal);
+        setTotal(isAnnual ? newTotal * 0.8 : newTotal);
     }, [selectedProducts, pages, languages, isWebSelected, isAnnual]);
 
     useEffect(() => {
@@ -157,6 +154,7 @@ export function CalculatorPage() {
                                     src={prod.img}
                                     selectedProducts={selectedProducts}
                                     setSelectedProducts={setSelectedProducts}
+                                    isAnnual={isAnnual}
                                 />
                                 {prod.id === "web" && isWebSelected &&
                                     <WebFeatures
@@ -216,13 +214,14 @@ export function CalculatorPage() {
                         </div>
                         {filteredQuotes.map((quote, index) => {
                             return (
-                                <QuoteBlock
+                                <Quote
                                     key={index}
                                     name={quote.name}
                                     email={quote.email}
                                     phone={quote.phone}
                                     selectedProducts={quote.selectedProducts}
                                     total={quote.total}
+                                    createdAt={quote.createdAt}
                                 />
                             )
                         })}

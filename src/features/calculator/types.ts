@@ -37,6 +37,7 @@ export type ProductCardType = {
     src: string;
     selectedProducts: ProductType[];
     setSelectedProducts: (value: ProductType[]) => void;
+    isAnnual: boolean;
 }
 
 export type QuoteFormType = {
@@ -55,16 +56,13 @@ export type SortButtonType = {
     isActive?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-export type QuoteBlockType = {
+export type QuoteType = {
     name: string;
     email: string;
     phone: string;
     selectedProducts: ProductType[];
     total: number;
-}
-
-export type QuoteType = QuoteBlockType & {
+    createdAt: Date;
     pages?: number;
     languages?: number;
-    createdAt: Date;
-};
+}
