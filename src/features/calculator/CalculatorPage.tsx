@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import FlowersL from "../../assets/flowers-landscape.png";
 import FlowersP from "../../assets/flowers-portrait.png";
+import { CopyUrlButton } from "../../components/CopyURLButton/CopyURLButton";
 import { Section } from "../../components/Section/Section";
+import { SortButton } from "../../components/SortButton/SortButton";
 import { Switcher } from "../../components/Switcher/Switcher";
 import products from "../../config/products.json";
 import { Header } from "./components/Header/Header";
 import { ProductCard } from "./components/ProductCard/ProductCard";
 import { Quote } from "./components/Quote/Quote";
 import { QuoteForm } from "./components/QuoteForm/QuoteForm";
-import { SortButton } from "./components/SortButton/SortButton";
-import { Total } from "./components/Total/Total";
 import { WebFeatures } from "./components/WebFeatures/WebFeatures";
 import type { ProductType, QuoteType } from "./types";
 
@@ -29,9 +30,9 @@ export function CalculatorPage() {
     const [query, setQuery] = useState("");
     const [filteredQuotes, setFilteredQuotes] = useState<QuoteType[]>(quotes);
     const [isAnnual, setIsAnnual] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const isWebSelected = selectedProducts.find(p => p.id === "web");
-    console.log(quotes)
 
     useEffect(() => {
         const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price, 0);
@@ -57,6 +58,53 @@ export function CalculatorPage() {
         }
     }, [quotes, query]);
 
+    useEffect(() => {
+        const newParams = new URLSearchParams();
+
+        selectedProducts.forEach(product => {
+            if (product.id === "seo") {
+                newParams.set("SEO", "true");
+            }
+            if (product.id === "ads") {
+                newParams.set("Ads", "true");
+            }
+            if (product.id === "web") {
+                newParams.set("WebPage", "true");
+                if (isWebSelected) {
+                    newParams.set("pages", pages.toString());
+                    newParams.set("lang", languages.toString());
+                }
+            }
+        });
+
+        setSearchParams(newParams);
+    }, [pages, languages, selectedProducts, isWebSelected, setSearchParams]);
+
+    useEffect(() => {
+        const pagesParam = searchParams.get("pages");
+        const languagesParam = searchParams.get("lang");
+        if (pagesParam) setPages(Number(pagesParam));
+        if (languagesParam) setLanguages(Number(languagesParam));
+
+        const productsToSelect = [];
+
+        if (searchParams.get('WebPage') === 'true') {
+            const webPageProduct = products.find(p => p.id === "web");
+            if (webPageProduct) productsToSelect.push(webPageProduct);
+        }
+
+        if (searchParams.get('SEO') === 'true') {
+            const seoProduct = products.find(p => p.id === "seo");
+            if (seoProduct) productsToSelect.push(seoProduct);
+        }
+
+        if (searchParams.get('Ads') === 'true') {
+            const adsProduct = products.find(p => p.id === "ads");
+            if (adsProduct) productsToSelect.push(adsProduct);
+        }
+        setSelectedProducts(productsToSelect);
+    }, [searchParams]);
+
     const handleAddQuote = (e: React.FormEvent) => {
         e.preventDefault();
         const newQuote: QuoteType = {
@@ -76,7 +124,8 @@ export function CalculatorPage() {
             alert("no product selected");
             return
         }
-        setQuotes([...quotes, newQuote]);
+        setQuotes([...quotes, newQuote].sort((a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
         setSelectedProducts([]);
 
         setName("");
@@ -137,7 +186,8 @@ export function CalculatorPage() {
                         </span>
                     </div>
                 </div>
-                <div className="m-auto flex gap-3 md:gap-1 items-center justify-center flex-col md:flex-row w-container">
+                <div className="m-auto flex gap-3 md:gap-1 items-center justify-center
+                flex-col md:flex-row w-container">
                     {products.map((prod) => {
                         return (
                             <div
@@ -168,7 +218,13 @@ export function CalculatorPage() {
                         );
                     })}
                 </div>
-                <Total total={total} />
+                <div className="text-center text-dark-grey w-container">
+                    <div className="md:float-right">
+                        <p className="font-anton text-2xl pt-1 md:text-right">
+                            Total: {total.toFixed(2)} €</p>
+                        <CopyUrlButton />
+                    </div>
+                </div>
             </Section>
             <Section bg="dark" padding="pb-4 2xl:py-6">
                 <img src={FlowersL} className="2xl:hidden portrait:hidden w-full -mt-[9%]" />
