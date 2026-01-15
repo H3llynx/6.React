@@ -1,6 +1,6 @@
-import ArrowDown from "../../../../assets/icons/arrow-down.svg?react"
-import ArrowUp from "../../../../assets/icons/arrow-up.svg?react"
-import type { SortButtonType } from "../../types"
+import ArrowDown from "../../assets/icons/arrow-down.svg?react"
+import ArrowUp from "../../assets/icons/arrow-up.svg?react"
+import type { SortButtonType } from "../../features/calculator/types"
 
 export function SortButton({ sort, onClick, sortAsc, isActive }: SortButtonType) {
     return (
