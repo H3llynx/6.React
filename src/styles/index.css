@@ -38,6 +38,16 @@ body {
     }
 }
 
+@layer base {
+    *:focus-visible {
+        outline-width: 2px;
+        outline-style: solid;
+        outline-offset: 2px;
+        outline-color: var(--color-orange);
+        border-radius: 5px;
+    }
+}
+
 @layer components {
     .dark-stroke {
         text-shadow: -2px -2px 0 var(--color-dark-grey), 2px -2px 0 var(--color-dark-grey), -2px 2px 0 var(--color-dark-grey), 2px 2px 0 var(--color-dark-grey);
