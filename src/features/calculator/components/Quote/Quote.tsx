@@ -13,10 +13,12 @@ export function Quote({
 }: QuoteType) {
 
     return (
-        <div className="flex flex-col text-sm text-dark relative p-1.5 rounded-2xl
+        <div
+            className="flex flex-col text-sm text-dark relative p-1.5 rounded-2xl
         w-quotes-container bg-rgba-grey bg-rgba-gradient bg-size-[200%_100%]
         shadow-[0_0px_20px_rgba(0,0,0,0.4)] animate-[move-overlay_5s_ease-out_infinite]
-        border border-grey-2">
+        border border-grey-2 focus-visible:outline-none focus-visible:shadow-[0_0_15px_white]"
+            tabIndex={0}>
             <p className="self-end text-xs text-grey-2">Created:
                 <span className="font-medium"> {new Date(createdAt).toLocaleDateString()}</span>
             </p>

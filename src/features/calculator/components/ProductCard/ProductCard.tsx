@@ -54,8 +54,10 @@ export function ProductCard({
                 key={id}
                 htmlFor={id}
                 className="cta self-end mr-2 mb-2 group has-checked:bg-grey
-            hover:has-checked:bg-light-grey has-checked:text-teel focus-within:outline-2
-             focus-within:outline-red focus-within:outline-offset-2"
+            hover:has-checked:bg-light-grey has-checked:text-teel
+            has-focus-visible:outline-2
+          has-focus-visible:outline-orange
+            has-focus-visible:outline-offset-2"
             >
                 <input
                     id={id}

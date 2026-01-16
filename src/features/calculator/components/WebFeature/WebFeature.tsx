@@ -17,7 +17,7 @@ export function WebFeature({ name, remove, add, feature, addFeature }: WebFeatur
                     onClick={() => dialogRef.current?.showModal()}
                     tabIndex={0}
                 >
-                    <InfoSvg aria-hidden="true" className="w-[19px]" />
+                    <InfoSvg aria-hidden="true" />
                 </button>
                 <p className="capitalize">{name}s:</p>
             </span>

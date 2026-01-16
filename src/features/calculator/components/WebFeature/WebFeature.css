@@ -14,5 +14,5 @@
 }
 
 .info-btn {
-    @apply cursor-pointer hover:text-orange;
+    @apply cursor-pointer hover:text-orange rounded-full;
 }

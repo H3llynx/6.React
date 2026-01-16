@@ -7,6 +7,7 @@ export function CopyUrlButton() {
     return (
         <div className="relative">
             <button
+                tabIndex={0}
                 onClick={() => {
                     setIsShowing(true);
                     setTimeout(() => {
