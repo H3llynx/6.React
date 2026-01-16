@@ -3,11 +3,11 @@ import { useSearchParams } from "react-router";
 import FlowersL from "../../assets/flowers-landscape.png";
 import FlowersP from "../../assets/flowers-portrait.png";
 import { CopyURLButton } from "../../components/CopyURLButton/CopyURLButton";
+import { Header } from "../../components/Header/Header";
 import { Section } from "../../components/Section/Section";
 import { SortButton } from "../../components/SortButton/SortButton";
 import { Switcher } from "../../components/Switcher/Switcher";
 import products from "../../config/products.json";
-import { Header } from "./components/Header/Header";
 import { ProductCard } from "./components/ProductCard/ProductCard";
 import { Quote } from "./components/Quote/Quote";
 import { QuoteForm } from "./components/QuoteForm/QuoteForm";
@@ -32,16 +32,16 @@ export function CalculatorPage() {
     const [isAnnual, setIsAnnual] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const isWebSelected = selectedProducts.find(p => p.id === "web");
+    const webSelected = selectedProducts.find(product => product.id === "web");
 
     useEffect(() => {
-        const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price, 0);
-        const pagesTotal = isWebSelected ? pages * 30 : 0;
-        const languagesTotal = isWebSelected ? languages * 30 : 0;
+        const productsTotal = selectedProducts.reduce((acc, prod) => acc + prod.price.base, 0);
+        const pagesTotal = webSelected ? pages * webSelected.price.page! : 0;
+        const languagesTotal = webSelected ? webSelected.price.language! : 0;
         const newTotal = productsTotal + pagesTotal + languagesTotal
 
         setTotal(isAnnual ? newTotal * 0.8 : newTotal);
-    }, [selectedProducts, pages, languages, isWebSelected, isAnnual]);
+    }, [selectedProducts, pages, languages, webSelected, isAnnual]);
 
     useEffect(() => {
         localStorage.setItem("quotes", JSON.stringify(quotes));
@@ -70,7 +70,7 @@ export function CalculatorPage() {
             }
             if (product.id === "web") {
                 newParams.set("WebPage", "true");
-                if (isWebSelected) {
+                if (webSelected) {
                     newParams.set("pages", String(pages));
                     newParams.set("lang", String(languages));
                 }
@@ -81,7 +81,7 @@ export function CalculatorPage() {
         });
 
         setSearchParams(newParams);
-    }, [pages, languages, selectedProducts, isWebSelected, setSearchParams, isAnnual]);
+    }, [pages, languages, selectedProducts, webSelected, setSearchParams, isAnnual]);
 
     useEffect(() => {
         const productsToSelect = [];
@@ -122,9 +122,9 @@ export function CalculatorPage() {
             createdAt: new Date()
         };
 
-        if (isWebSelected) {
-            isWebSelected.pages = pages;
-            isWebSelected.languages = languages;
+        if (webSelected) {
+            webSelected.pages = pages;
+            webSelected.languages = languages;
         }
         if (selectedProducts.length === 0) {
             alert("no product selected");
@@ -205,14 +205,14 @@ export function CalculatorPage() {
                                     products={products}
                                     id={prod.id}
                                     name={prod.name}
-                                    price={prod.price}
+                                    price={prod.price.base}
                                     features={prod.features}
                                     src={prod.img}
                                     selectedProducts={selectedProducts}
                                     setSelectedProducts={setSelectedProducts}
                                     isAnnual={isAnnual}
                                 />
-                                {prod.id === "web" && isWebSelected &&
+                                {prod.id === "web" && webSelected &&
                                     <WebFeatures
                                         pages={pages}
                                         setPages={setPages}

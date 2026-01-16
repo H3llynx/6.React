@@ -3,13 +3,18 @@ import type React from "react";
 export type ProductType = {
     id: string;
     name: string;
-    price: number;
+    price: {
+        base: number;
+        page?: number;
+        language?: number;
+    };
     pages?: number;
     languages?: number;
 }
 
 export type WebFeatureType = {
     name: string;
+    price: number | undefined;
     remove: () => void;
     add: () => void;
     feature: number;
@@ -26,6 +31,7 @@ export type WebFeaturesType = {
 export type DialogType = {
     close: () => void;
     feature: string;
+    price: number;
 }
 
 export type ProductCardType = {

@@ -1,7 +1,7 @@
 import { forwardRef } from "react"
 import type { DialogType } from "../../types"
 
-export const Dialog = forwardRef<HTMLDialogElement, DialogType>(({ close, feature }, ref) => {
+export const Dialog = forwardRef<HTMLDialogElement, DialogType>(({ close, feature, price }, ref) => {
     return (
         <dialog
             ref={ref}
@@ -9,7 +9,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogType>(({ close, featur
         >
             <button
                 onClick={close}
-                className="text-dark-grey hover:text-pink self-end"
+                className="text-dark-grey hover:text-pink self-end rounded-full w-1 h-1 text-md leading-1"
                 aria-label="Close dialog"
                 tabIndex={0}
             >
@@ -17,7 +17,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogType>(({ close, featur
             </button>
             <div className="px-1 py-1">
                 <h2 className="text-2xl font-anton text-teel mb-1">Number of {feature}s</h2>
-                <p>Add the {feature}s your project will have. Each {feature} costs <strong>30€</strong>.</p>
+                <p>Add the {feature}s your project will have. Each {feature} costs <strong>{price} €</strong>.</p>
             </div>
         </dialog>
     )

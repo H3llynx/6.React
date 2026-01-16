@@ -4,7 +4,7 @@ import type { WebFeatureType } from "../../types";
 import { Dialog } from "../Dialog/Dialog";
 import "./WebFeature.css";
 
-export function WebFeature({ name, remove, add, feature, addFeature }: WebFeatureType) {
+export function WebFeature({ name, price, remove, add, feature, addFeature }: WebFeatureType) {
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -38,6 +38,7 @@ export function WebFeature({ name, remove, add, feature, addFeature }: WebFeatur
             <Dialog
                 feature={name}
                 ref={dialogRef}
+                price={price}
                 close={() => dialogRef.current?.close()}
             />
         </div>

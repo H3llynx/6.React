@@ -1,7 +1,10 @@
+import products from "../../../../config/products.json";
 import type { WebFeaturesType } from "../../types";
 import { WebFeature } from "../WebFeature/WebFeature";
 
 export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFeaturesType) {
+
+    const web = products.find(product => product.id === "web")!;
 
     const addPages = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPages(Number(e.target.value))
@@ -21,6 +24,7 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
             <WebFeature
                 name={"page"}
                 feature={pages}
+                price={web.price.page}
                 remove={() => { remove(pages, setPages) }}
                 add={() => { setPages(pages + 1) }}
                 addFeature={addPages}
@@ -28,6 +32,7 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
             <WebFeature
                 name={"language"}
                 feature={languages}
+                price={web.price.language}
                 remove={() => { remove(languages, setLanguages) }}
                 add={() => { setLanguages(languages + 1) }}
                 addFeature={addLanguages}

@@ -1,7 +1,9 @@
 [{
     "id" : "seo",
     "name": "SEO Campaign",
-    "price": 300,
+    "price": {
+        "base":300
+    },
     "img": "/6.React/products/sasha-seo.png",
     "features": [
         "Rank higher on Google searches",
@@ -12,7 +14,9 @@
 {
     "id" : "ads",
     "name": "Advertising Campaign",
-    "price": 400,
+    "price": {
+        "base": 400
+    },
     "img": "/6.React/products/sasha-ads.png",
     "features": [
         "Targeted Google/social ads",
@@ -23,7 +27,11 @@
 {
     "id" : "web",
     "name": "Website",
-    "price": 500,
+    "price": {
+        "base":500,
+        "page": 30,
+        "language": 30
+    },
     "img": "/6.React/products/sasha-web.png",
     "features": [
         "Mobile-responsive modern design",
