@@ -4,10 +4,10 @@ import { describe, expect, it } from "vitest";
 import { Navbar } from './Navbar';
 
 describe("Navbar", () => {
-    const renderNavbar = (props = {}) => {
+    const renderNavbar = () => {
         return render(
             <BrowserRouter>
-                <Navbar {...props} />
+                <Navbar />
             </BrowserRouter>
         )
     }
@@ -29,7 +29,11 @@ describe("Navbar", () => {
     });
 
     it("changes the background gradient when the gradient bg colorful prop is passed", () => {
-        const { container } = renderNavbar({ bg: "colorful" })
+        const { container } = render(
+            <BrowserRouter>
+                <Navbar bg={"colorful"} />
+            </BrowserRouter>
+        )
         const nav = container.querySelector('nav')
 
         expect(nav).toHaveClass("bg-light-grey")

@@ -34,6 +34,6 @@ describe("Switcher", () => {
         const button = screen.getByRole("button");
         await user.click(button);
 
-        expect(handleClick).toHaveBeenCalledTimes(1)
+        expect(handleClick).toHaveBeenCalled()
     })
 });

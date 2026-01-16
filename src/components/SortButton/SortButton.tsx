@@ -7,10 +7,11 @@ export function SortButton({ sort, onClick, sortAsc, isActive }: SortButtonType)
         <button
             tabIndex={0}
             onClick={onClick}
-            className="cursor-pointer flex items-center justify-center px-0.5 h-[30px] rounded-lg hover:bg-[rgba(0,0,0,0.1)]"
+            className="cursor-pointer flex items-center justify-center px-0.5 h-[30px]
+            rounded-lg hover:bg-[rgba(0,0,0,0.1)]"
         >
             {sort}
-            {isActive && (sortAsc ? <ArrowUp /> : <ArrowDown />)}
+            {isActive && (sortAsc ? <ArrowUp aria-label="ascending" /> : <ArrowDown aria-label="descending" />)}
         </button>
     )
 }
