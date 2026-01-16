@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import FlowersL from "../../assets/flowers-landscape.png";
 import FlowersP from "../../assets/flowers-portrait.png";
-import { CopyUrlButton } from "../../components/CopyURLButton/CopyURLButton";
+import { CopyURLButton } from "../../components/CopyURLButton/CopyURLButton";
 import { Section } from "../../components/Section/Section";
 import { SortButton } from "../../components/SortButton/SortButton";
 import { Switcher } from "../../components/Switcher/Switcher";
@@ -71,37 +71,43 @@ export function CalculatorPage() {
             if (product.id === "web") {
                 newParams.set("WebPage", "true");
                 if (isWebSelected) {
-                    newParams.set("pages", pages.toString());
-                    newParams.set("lang", languages.toString());
+                    newParams.set("pages", String(pages));
+                    newParams.set("lang", String(languages));
                 }
+            }
+            if (isAnnual) {
+                newParams.set("annual", "true")
             }
         });
 
         setSearchParams(newParams);
-    }, [pages, languages, selectedProducts, isWebSelected, setSearchParams]);
+    }, [pages, languages, selectedProducts, isWebSelected, setSearchParams, isAnnual]);
 
     useEffect(() => {
-        const pagesParam = searchParams.get("pages");
-        const languagesParam = searchParams.get("lang");
-        if (pagesParam) setPages(Number(pagesParam));
-        if (languagesParam) setLanguages(Number(languagesParam));
-
         const productsToSelect = [];
 
-        if (searchParams.get('WebPage') === 'true') {
+        if (searchParams.get("WebPage") === "true") {
             const webPageProduct = products.find(p => p.id === "web");
             if (webPageProduct) productsToSelect.push(webPageProduct);
+            const pagesParam = searchParams.get("pages");
+            const languagesParam = searchParams.get("lang");
+            if (pagesParam) setPages(Number(pagesParam));
+            if (languagesParam) setLanguages(Number(languagesParam));
         }
 
-        if (searchParams.get('SEO') === 'true') {
+        if (searchParams.get("SEO") === "true") {
             const seoProduct = products.find(p => p.id === "seo");
             if (seoProduct) productsToSelect.push(seoProduct);
         }
 
-        if (searchParams.get('Ads') === 'true') {
+        if (searchParams.get("Ads") === "true") {
             const adsProduct = products.find(p => p.id === "ads");
             if (adsProduct) productsToSelect.push(adsProduct);
         }
+        if (searchParams.get("annual") === "true") {
+            setIsAnnual(true);
+        }
+
         setSelectedProducts(productsToSelect);
     }, [searchParams]);
 
@@ -222,7 +228,7 @@ export function CalculatorPage() {
                     <div className="md:float-right">
                         <p className="font-anton text-2xl pt-1 md:text-right">
                             Total: {total.toFixed(2)} €</p>
-                        <CopyUrlButton />
+                        <CopyURLButton />
                     </div>
                 </div>
             </Section>
@@ -281,7 +287,6 @@ export function CalculatorPage() {
                                 />
                             )
                         })}
-                        <button onClick={() => setQuotes([])}>Reset</button>
                     </div>
                 }
             </Section>
