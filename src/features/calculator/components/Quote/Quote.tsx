@@ -22,7 +22,7 @@ export function Quote({
             <p className="self-end text-xs text-grey-2">Created:
                 <span className="font-medium"> {new Date(createdAt).toLocaleDateString()}</span>
             </p>
-            <div className="w-full flex flex-col md:flex-row gap-1 justify-between md:items-end">
+            <div className="w-full flex flex-col md:flex-row gap-1 capitalize justify-between md:items-end">
                 <div className="md:w-[30%]">
                     <h2 className="font-anton text-xl text-teel">{name}</h2>
                     <ul className="flex flex-wrap md:flex-col mt-0.5 items-center md:items-start gap-0.5 md:gap-0">
