@@ -32,7 +32,7 @@ export function ProductCard({
 
     return (
         <div className="flex flex-col gap-1 items-center pt-2 relative">
-            <h2 className="font-anton text text-2xl text-teel">{name}</h2>
+            <h2 className="font-anton text text-2xl text-teel capitalize">{name}</h2>
             <span className="absolute top-[-25px] right-[-15px] text-md text-light
             p-1 font-semibold flex justify-center items-center aspect-square
             bg-price-label bg-cover">

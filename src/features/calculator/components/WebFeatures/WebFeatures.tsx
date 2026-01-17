@@ -6,11 +6,11 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
 
     const web = products.find(product => product.id === "web")!;
 
-    const addPages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const typePages = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPages(Number(e.target.value))
     }
 
-    const addLanguages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const typeLanguages = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLanguages(Number(e.target.value))
     }
 
@@ -27,7 +27,7 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
                 price={web.price.page}
                 remove={() => { remove(pages, setPages) }}
                 add={() => { setPages(pages + 1) }}
-                addFeature={addPages}
+                typeFeature={typePages}
             />
             <WebFeature
                 name={"language"}
@@ -35,7 +35,7 @@ export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFea
                 price={web.price.language}
                 remove={() => { remove(languages, setLanguages) }}
                 add={() => { setLanguages(languages + 1) }}
-                addFeature={addLanguages}
+                typeFeature={typeLanguages}
             />
         </div>
     )

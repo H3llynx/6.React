@@ -18,7 +18,7 @@ export type WebFeatureType = {
     remove: () => void;
     add: () => void;
     feature: number;
-    addFeature: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    typeFeature: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type WebFeaturesType = {
@@ -31,7 +31,7 @@ export type WebFeaturesType = {
 export type DialogType = {
     close: () => void;
     feature: string;
-    price: number;
+    price: number | undefined;
 }
 
 export type ProductCardType = {

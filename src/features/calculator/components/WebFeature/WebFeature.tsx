@@ -4,7 +4,7 @@ import type { WebFeatureType } from "../../types";
 import { Dialog } from "../Dialog/Dialog";
 import "./WebFeature.css";
 
-export function WebFeature({ name, price, remove, add, feature, addFeature }: WebFeatureType) {
+export function WebFeature({ name, price, remove, add, feature, typeFeature }: WebFeatureType) {
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -13,7 +13,7 @@ export function WebFeature({ name, price, remove, add, feature, addFeature }: We
             <span className="flex gap-[5px] items-center">
                 <button
                     className="info-btn"
-                    aria-label={`more information about ${name}`}
+                    aria-label={`more information about ${name}s`}
                     onClick={() => dialogRef.current?.showModal()}
                     tabIndex={0}
                 >
@@ -23,14 +23,14 @@ export function WebFeature({ name, price, remove, add, feature, addFeature }: We
             </span>
             <button
                 className="btn-plus-minus"
-                aria-label="Remove page"
+                aria-label={`Remove ${name}`}
                 onClick={remove}
                 tabIndex={0}
             >-</button>
-            <input type="number" className="web-feat-inputs" min="1" value={feature} onChange={(e) => addFeature(e)} />
+            <input type="number" className="web-feat-inputs" min="1" value={feature} onChange={(e) => typeFeature(e)} />
             <button
                 className="btn-plus-minus"
-                aria-label="Add page"
+                aria-label={`Add ${name}`}
                 onClick={add}
                 tabIndex={0}
             >+</button>
