@@ -20,7 +20,13 @@ export function Quote({
         border border-grey-2 focus-visible:outline-none focus-visible:shadow-[0_0_15px_white]"
             tabIndex={0}>
             <p className="self-end text-xs text-grey-2">Created:
-                <span className="font-medium"> {new Date(createdAt).toLocaleDateString()}</span>
+                <time
+                    className="font-medium"
+                    dateTime={new Date(createdAt).toISOString()}
+                    data-testid="quote-date"
+                >
+                    {new Date(createdAt).toLocaleDateString()}
+                </time>
             </p>
             <div className="w-full flex flex-col md:flex-row gap-1 capitalize justify-between md:items-end">
                 <div className="md:w-[30%]">

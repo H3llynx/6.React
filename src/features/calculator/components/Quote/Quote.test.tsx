@@ -30,7 +30,7 @@ describe("Quote", () => {
     };
     const testProductArray = [testProduct1, testProduct2];
     const total = testProductArray.reduce((acc, prod) => acc + prod.price.base, 0);
-
+    const date = new Date("2026-01-17")
 
     render(
         <Quote
@@ -40,13 +40,17 @@ describe("Quote", () => {
             phone={"666 666 666"}
             selectedProducts={testProductArray}
             total={total}
-            createdAt={new Date("2026-01-17")}
+            createdAt={new Date(date)}
         />
     )
+
     it("shows the quote with the correct product information", () => {
         expect(screen.getByText("Helene T.")).toBeInTheDocument();
+        expect(screen.getByText("test@h.com")).toBeInTheDocument();
+        expect(screen.getByText("666 666 666")).toBeInTheDocument();
         expect(screen.getByText("500.00 €")).toBeInTheDocument();
         expect(screen.getByText("test 1")).toBeInTheDocument();
         expect(screen.getByText("test 2")).toBeInTheDocument();
+        expect(screen.getByTestId("quote-date")).toHaveAttribute("dateTime", date.toISOString());
     });
 });
