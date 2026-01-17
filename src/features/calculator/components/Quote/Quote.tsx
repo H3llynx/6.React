@@ -28,9 +28,9 @@ export function Quote({
                     {new Date(createdAt).toLocaleDateString()}
                 </time>
             </p>
-            <div className="w-full flex flex-col md:flex-row gap-1 capitalize justify-between md:items-end">
+            <div className="w-full flex flex-col md:flex-row gap-1 justify-between md:items-end">
                 <div className="md:w-[30%]">
-                    <h2 className="font-anton text-xl text-teel">{name}</h2>
+                    <h2 className="font-anton text-xl text-teel capitalize">{name}</h2>
                     <ul className="flex flex-wrap md:flex-col mt-0.5 items-center md:items-start gap-0.5 md:gap-0">
                         <li className="text-grey-2 flex gap-[5px] items-center"><EmailSvg className="w-1 text-teel" />{email}</li>
                         <li className="text-grey-2 flex gap-[5px] items-center"><PhoneSvg className="w-1 text-teel" />{phone}</li>

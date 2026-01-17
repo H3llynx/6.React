@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import FlowersL from "../../assets/flowers-landscape.png";
 import FlowersP from "../../assets/flowers-portrait.png";
+import DeleteSvg from "../../assets/icons/delete.svg?react";
 import { CopyURLButton } from "../../components/CopyURLButton/CopyURLButton";
 import { Header } from "../../components/Header/Header";
 import { Section } from "../../components/Section/Section";
@@ -114,6 +115,7 @@ export function CalculatorPage() {
     const handleAddQuote = (e: React.FormEvent) => {
         e.preventDefault();
         const newQuote: QuoteType = {
+            id: crypto.randomUUID(),
             name: name,
             email: email,
             phone: phone,
@@ -137,6 +139,14 @@ export function CalculatorPage() {
         setName("");
         setEmail("");
         setPhone("");
+    }
+
+    const handleDeleteQuote = (q: QuoteType) => {
+        let quoteList = [...quotes];
+        if (quoteList.some(quote => quote.id === q.id)) {
+            quoteList = quoteList.filter((quote) => quote.id !== q.id);
+        }
+        setQuotes(quoteList);
     }
 
     const handleSortByName = () => {
@@ -274,17 +284,29 @@ export function CalculatorPage() {
                                 />
                             </div>
                         </div>
-                        {filteredQuotes.map((quote, index) => {
+                        {filteredQuotes.map((quote) => {
                             return (
-                                <Quote
-                                    key={index}
-                                    name={quote.name}
-                                    email={quote.email}
-                                    phone={quote.phone}
-                                    selectedProducts={quote.selectedProducts}
-                                    total={quote.total}
-                                    createdAt={quote.createdAt}
-                                />
+                                <div className="w-full flex gap-0.5" key={quote.id}>
+                                    <Quote
+                                        id={quote.id}
+                                        name={quote.name}
+                                        email={quote.email}
+                                        phone={quote.phone}
+                                        selectedProducts={quote.selectedProducts}
+                                        total={quote.total}
+                                        createdAt={quote.createdAt}
+                                    />
+                                    <button
+                                        aria-label="Delete quote"
+                                        tabIndex={0}
+                                        onClick={() => handleDeleteQuote(quote)}
+                                    >
+                                        <DeleteSvg
+                                            className="cursor-pointer text-rgba-light
+                                        hover:text-rgba-grey hover:scale-110
+                                        active:text-orange" />
+                                    </button>
+                                </div>
                             )
                         })}
                     </div>

@@ -63,6 +63,7 @@ export type SortButtonType = {
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export type QuoteType = {
+    id: string;
     name: string;
     email: string;
     phone: string;
