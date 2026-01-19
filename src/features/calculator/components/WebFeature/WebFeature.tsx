@@ -19,7 +19,10 @@ export function WebFeature({ name, price, remove, add, feature, typeFeature }: W
                 >
                     <InfoSvg aria-hidden="true" />
                 </button>
-                <p className="capitalize">{name}s:</p>
+                <label
+                    className="capitalize"
+                    htmlFor={name}
+                >{name}s:</label>
             </span>
             <button
                 className="btn-plus-minus"
@@ -27,7 +30,14 @@ export function WebFeature({ name, price, remove, add, feature, typeFeature }: W
                 onClick={remove}
                 tabIndex={0}
             >-</button>
-            <input type="number" className="web-feat-inputs" min="1" value={feature} onChange={(e) => typeFeature(e)} />
+            <input
+                type="number"
+                id={name}
+                className="web-feat-inputs"
+                min="1"
+                value={feature}
+                onChange={(e) => typeFeature(e)}
+            />
             <button
                 className="btn-plus-minus"
                 aria-label={`Add ${name}`}

@@ -1,5 +1,5 @@
 import products from "../../../../config/products.json";
-import { useCalculator } from "../../hooks/UseCalculator";
+import { useCalculator } from "../../hooks/useCalculator";
 import { WebFeature } from "../WebFeature/WebFeature";
 
 export function WebFeatures() {
