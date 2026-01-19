@@ -12,6 +12,15 @@ export type ProductType = {
     languages?: number;
 }
 
+export type ProductCardType = {
+    products: ProductType[];
+    id: string;
+    name: string;
+    price: number;
+    features: string[];
+    src: string;
+}
+
 export type WebFeatureType = {
     name: string;
     price: number | undefined;
@@ -21,46 +30,12 @@ export type WebFeatureType = {
     typeFeature: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export type WebFeaturesType = {
-    pages: number;
-    setPages: (value: number) => void;
-    languages: number;
-    setLanguages: (value: number) => void;
-}
-
 export type DialogType = {
     close: () => void;
     feature: string;
     price: number | undefined;
 }
 
-export type ProductCardType = {
-    products: ProductType[];
-    id: string;
-    name: string;
-    price: number;
-    features: string[];
-    src: string;
-    selectedProducts: ProductType[];
-    setSelectedProducts: (value: ProductType[]) => void;
-    isAnnual: boolean;
-}
-
-export type QuoteFormType = {
-    name: string;
-    setName: (name: string) => void;
-    email: string;
-    setEmail: (email: string) => void;
-    phone: string;
-    setPhone: (phone: string) => void;
-    onSubmit: (e: React.FormEvent) => void;
-}
-
-export type SortButtonType = {
-    sort: string,
-    sortAsc?: boolean,
-    isActive?: boolean
-} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export type QuoteType = {
     id: string;

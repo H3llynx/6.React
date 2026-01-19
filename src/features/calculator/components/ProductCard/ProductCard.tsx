@@ -1,5 +1,6 @@
 import AddSvg from "../../../../assets/icons/add.svg?react";
 import CheckSvg from "../../../../assets/icons/check.svg?react";
+import { useCalculator } from "../../hooks/useCalculator";
 import type { ProductCardType } from "../../types";
 
 export function ProductCard({
@@ -9,10 +10,8 @@ export function ProductCard({
     price,
     features,
     src,
-    selectedProducts,
-    setSelectedProducts,
-    isAnnual
 }: ProductCardType) {
+    const { selectedProducts, setSelectedProducts, isAnnual } = useCalculator();
 
     const isChecked = selectedProducts.some(product => product.id === id);
 

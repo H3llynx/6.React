@@ -1,8 +1,11 @@
 import products from "../../../../config/products.json";
-import type { WebFeaturesType } from "../../types";
+import { useCalculator } from "../../hooks/UseCalculator";
 import { WebFeature } from "../WebFeature/WebFeature";
 
-export function WebFeatures({ pages, setPages, languages, setLanguages }: WebFeaturesType) {
+export function WebFeatures() {
+
+    const { pages, setPages, languages, setLanguages } = useCalculator();
+
 
     const web = products.find(product => product.id === "web")!;
 

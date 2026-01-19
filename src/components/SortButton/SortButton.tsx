@@ -1,6 +1,11 @@
 import ArrowDown from "../../assets/icons/arrow-down.svg?react"
 import ArrowUp from "../../assets/icons/arrow-up.svg?react"
-import type { SortButtonType } from "../../features/calculator/types"
+
+type SortButtonType = {
+    sort: string,
+    sortAsc?: boolean,
+    isActive?: boolean
+} & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function SortButton({ sort, onClick, sortAsc, isActive }: SortButtonType) {
     return (

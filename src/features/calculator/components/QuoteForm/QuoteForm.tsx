@@ -1,22 +1,17 @@
 
-import type { QuoteFormType } from "../../types";
+import { useCalculator } from "../../hooks/useCalculator";
 import "./QuoteForm.css";
 
-export function QuoteForm({
-    name,
-    setName,
-    email,
-    setEmail,
-    phone,
-    setPhone,
-    onSubmit
-}: QuoteFormType) {
+
+export function QuoteForm({ heading }: { heading: string }) {
+
+    const { name, setName, email, setEmail, phone, setPhone, handleAddQuote } = useCalculator();
 
     return (
         <>
-            <h2 className="font-anton text-center text-3xl relative z-10 text-shadow-[0_1px_5px_black]">Generate a quote</h2>
+            <h2 className="font-anton text-center text-3xl relative z-10 text-shadow-[0_1px_5px_black]">{heading}</h2>
             <form
-                onSubmit={onSubmit}
+                onSubmit={handleAddQuote}
                 className="flex flex-col md:flex-row flex-wrap gap-2 my-2 w-[80vw] md:w-container justify-center md:items-end">
                 <label className="form-label">Name *
                     <input type="text" className="form-inputs" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required />
