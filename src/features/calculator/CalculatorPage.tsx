@@ -15,7 +15,6 @@ import { QuoteForm } from "./components/QuoteForm/QuoteForm";
 import { WebFeatures } from "./components/WebFeatures/WebFeatures";
 import type { ProductType, QuoteType } from "./types";
 
-
 export function CalculatorPage() {
     const [selectedProducts, setSelectedProducts] = useState<ProductType[]>([]);
     const [total, setTotal] = useState<number>(0);
