@@ -25,7 +25,7 @@ Currently, there’s no backend integration. Therefore, all quotes are stored lo
 ![Screenshot](screenshots/screen2.gif)
 
 2. **Mobile view:**
-![Screenshot](screenshots/screen1.gif)
+![Screenshot](screenshots/screen3.gif)
 
 
 ## Getting Started
