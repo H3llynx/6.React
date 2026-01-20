@@ -30,6 +30,7 @@ Currently, there’s no backend integration. Therefore, all quotes are stored lo
 
 ![Screenshot](./public/screenshots/screen3.gif)
 
+---
 
 ## Getting Started
 
