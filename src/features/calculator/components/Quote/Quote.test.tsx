@@ -34,7 +34,7 @@ describe("Quote", () => {
 
     render(
         <Quote
-            key={"1"}
+            id={"1"}
             name={"Helene T."}
             email={"test@h.com"}
             phone={"666 666 666"}
