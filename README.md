@@ -1,69 +1,91 @@
-# React + TypeScript + Vite
+# Sprint 6 - Web service Quotation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sasha Web Services is an interactive web application built with React, TypeScript, and Tailwind CSS. Its purpose is to help web service professionals:
+- Instantly generate quotes for their services with either monthly or yearly payment options (including a 20% discount for yearly plans).
+- Sort, filter and delete generated quotes.
+- Share a custom link that pre-fills the calculator with selected services and options, allowing others to view the corresponding price immediately.
 
-Currently, two official plugins are available:
+Currently, there’s no backend integration. Therefore, all quotes are stored locally using localStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Goal
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Practice using React Router and essential hooks (useState, useEffect, useRef, useSearchParams, useContext).
+- Implement a feature-based architecture.
+- Learn how to test React components with Vitest
+- Apply responsive design principles and modern frontend styling techniques.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Preview
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Desktop view:**
+![Screenshot](screenshots/screen1.gif)
+![Screenshot](screenshots/screen2.gif)
+
+2. **Mobile view:**
+![Screenshot](screenshots/screen1.gif)
+
+
+## Getting Started
+
+1. **Clone the repo and switch to this branch:**
+
+```bash
+git clone https://github.com/H3llynx/6.React.git
+cd 6.React
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Folder Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+ ┣ 📂 src
+ |  ┣ 📂 assets
+ |  ┣ 📂 components
+ |  ┣ 📂 config
+ |  ┣ 📂 features
+ |  ┣ 📂 styles
+ |  ┣ 📂 test
+ |  ┣ 📄 App.tsx
+ |  ┣ 📄 main.tsx
+ ┣ 📄 eslint.config.js
+ ┣ 📄 index.html
+ ┣ 📄 package-lock.json
+ ┣ 📄 package.json
+ ┣ 📄 README.md
+ ┣ 📄 tsconfig.app.json
+ ┣ 📄 tsconfig.json
+ ┣ 📄 tsconfig.node.json
+ ┗ 📄 vite.config.ts
+```
+
+/src/ - main code folder
+/src/assets/ - images and icons
+/src/components/ - shared components
+/src/config/ - json files with the product (services) information
+/src/features/ - features pages and their components (includint their tests, types and additional CSS when applicable)
+/src/styles/ - main/shared css
+
+---
+
+## 🛠 Technologies Used
+
+- React
+- TypeScript
+- TailwindCSS
+- Vitest
+
+---
+
+## 🤝 Contributions
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository
+2. Create a new branch: git checkout -b feature/NewFeature
+3. Make your changes and commit them: git commit -m 'Add New Feature'
+4. Push the changes to your branch: git push origin feature/NewFeature
+5. Open a pull request
