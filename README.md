@@ -20,11 +20,14 @@ Currently, there’s no backend integration. Therefore, all quotes are stored lo
 
 ## Preview
 
-1. **Desktop view:**
+1. **Desktop view**:
+
 ![Screenshot](./public/screenshots/screen1.gif)
 ![Screenshot](./public/screenshots/screen2.gif)
 
-2. **Mobile view:**
+
+2. **Mobile view**:
+
 ![Screenshot](./public/screenshots/screen3.gif)
 
 
