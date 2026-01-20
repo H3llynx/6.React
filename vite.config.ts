@@ -6,7 +6,7 @@ import { defineConfig } from 'vitest/config';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr()],
-  base: '6.React/',
+  base: '/6.React/',
   test: {
     environment: 'jsdom',
     globals: true,
