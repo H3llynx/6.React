@@ -1,21 +1,10 @@
-import { useEffect } from 'react';
-import { Route, Routes, useLocation } from "react-router";
-import { CalculatorPage } from "./features/calculator/CalculatorPage";
-import { HomePage } from "./features/home/HomePage";
+import { RouterProvider } from 'react-router';
+import { router } from './router';
 
 function App() {
 
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  return <RouterProvider router={router} />;
 
-  return (
-    <Routes>
-      <Route index element={<HomePage />} />
-      <Route path="calculator" element={<CalculatorPage />} />
-    </Routes>
-  )
 }
 
 export default App
