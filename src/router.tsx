@@ -18,5 +18,4 @@ export const router = createHashRouter([
             }
         ]
     }
-],
-    { basename: "/6.React" });
+]);
