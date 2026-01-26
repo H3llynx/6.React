@@ -33,7 +33,7 @@ export function ProductGroup() {
                     );
                 })}
             </div>
-            <div className="text-center text-dark-grey w-container">
+            <div className="text-center text-dark-grey w-container md:sticky md:bottom-0 md:bg-grey-gradient md:py-1">
                 <div className="md:float-right">
                     <p className="font-anton text-2xl pt-1 md:text-right">
                         Total: {total.toFixed(2)} €</p>
