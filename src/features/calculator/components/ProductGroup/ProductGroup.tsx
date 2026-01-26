@@ -33,9 +33,9 @@ export function ProductGroup() {
                     );
                 })}
             </div>
-            <div className="text-center text-dark-grey w-container md:sticky md:bottom-0 md:bg-grey-gradient md:py-1">
-                <div className="md:float-right">
-                    <p className="font-anton text-2xl pt-1 md:text-right">
+            <div className="text-center text-dark-grey w-screen sticky bottom-0 bg-grey-gradient py-1">
+                <div className="w-container m-auto md:text-right">
+                    <p className="font-anton text-2xl">
                         Total: {total.toFixed(2)} €</p>
                     <CopyURLButton />
                 </div>
