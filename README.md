@@ -20,6 +20,8 @@ Currently, there’s no backend integration. Therefore, all quotes are stored lo
 
 ## Preview
 
+You can try the app via the following link: https://h3llynx.github.io/6.React
+
 1. **Desktop view**:
 
 ![Screenshot](./public/screenshots/screen1.gif)
